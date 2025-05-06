@@ -1,0 +1,339 @@
+body {
+  margin: 0; /* Remove a margem padrão da página */
+  /* padding: 0; Remove o preenchimento padrão da página */
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif; /* Define a hierarquia de fontes */
+  background-color: transparent; /* Define o fundo da página como transparente */
+}
+
+:root {
+  --tamanho-header: 80px; /* Altura do cabeçalho */
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px); /* Altura do banner dinâmica */
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px); /* Altura do simulador dinâmica */
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px); /* Altura do login dinâmica */
+  --tamanho-footer: 65px; /* Altura do rodapé */
+}
+
+.fundo {
+  background-image: url(../assets/imgs/Fundo.png);
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+.container {
+  display: flex; /* Usa flexbox para o layout */
+  width: 80%; /* Largura de 80% da tela */
+  margin: auto; /* Centraliza horizontalmente */
+}
+
+.header {
+  height: var(--tamanho-header); /* Altura do cabeçalho */
+  border-bottom: 2px solid #C19A6B; /* Borda inferior azul */
+}
+
+.header .container {
+  justify-content: space-between; /* Espaça os elementos no container */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  height: 100%; /* Altura total do container pai */
+}
+
+.header a {
+  text-decoration: none; /* Remove sublinhado de links */
+  color: #8B0000; /* Cor dos links */
+}
+
+.agora {
+  font-weight: 800; /* Peso da fonte mais forte */
+}
+
+.navbar {
+  width: 300px; /* Largura da navbar */
+  display: flex; /* Layout flexível */
+  align-items: center; /* Alinha os itens ao centro verticalmente */
+  justify-content: space-between; /* Espaçamento entre os itens */
+  list-style: none; /* Remove marcadores de lista */
+  background-color: transparent;
+}
+
+.titulo {
+  background-image: url(../assets/imgs/Logo.png);
+  background-size: cover;
+  height: 70px;
+  width: 200px;
+}
+
+.header h1 {
+  margin: 0; /* Remove margens do título */
+}
+
+.banner {
+  height: var(--tamanho-banner); /* Altura do banner */
+}
+
+.banner .container {
+  justify-content: center; /* Centraliza conteúdo horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100%; /* Altura total do banner */
+}
+
+.banner .container p {
+  width: 50%; /* Largura do parágrafo */
+  margin: 0; /* Remove margens */
+  padding: 0; /* Remove padding */
+  font-size: 36px; /* Tamanho da fonte */
+}
+
+.banner .container span {
+  font-weight: 800; /* Destaca o texto */
+}
+
+.box img {
+  width: 170px; /* Define largura das imagens */
+}
+
+.box {
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Direção em coluna */
+  align-items: center; /* Centraliza itens */
+}
+
+/* FOOTER */
+
+.footer {
+  height: 150px; /* Altura do rodapé */
+  color: #fff; /* Cor do texto */
+  display: flex; /* Layout flexível */
+  font-size: 15px; /* Tamanho da fonte */
+}
+
+.footer .container {
+  justify-content: center; /* Centraliza conteúdo */
+  text-align: center; /* Centraliza texto */
+}
+
+.footer .container .version {
+  font-size: 12px; /* Tamanho menor para versão */
+}
+
+/* LOGIN */
+
+.login {
+  height: 100vh; 
+  /* background-size: cover; Cobre toda a área */
+}
+
+.login .container {
+  justify-content: left; /* Centraliza conteúdo */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100%; /* Altura total */
+  background-size: cover;
+}
+
+.card {
+  width: 50%; /* Metade da largura da tela */
+  background-color: rgba(0, 0, 0, 60%); 
+  border-radius: 10px; /* Borda arredondada */
+  display: flex; /* Layout flexível */
+  align-items: center; /* Alinha itens */
+  justify-content: space-evenly; /* Espaça itens igualmente */
+  color: darkred; /* Cor do texto */
+  flex-direction: column; /* Direção em coluna */
+  height: fit-content; /* Altura ajustada ao conteúdo */
+  padding: 20px 0; /* Espaçamento vertical */
+}
+
+.card h2 {
+  margin: 0; /* Remove margem */
+  font-size: 30px; /* Tamanho da fonte */
+}
+
+.formulario {
+  display: flex; /* Layout flexível */
+  height: 90%; /* Altura relativa */
+  width: 80%; /* Largura relativa */
+  justify-content: space-around; /* Espaçamento uniforme */
+  flex-direction: column; /* Direção em coluna */
+  color: white; /* Cor do texto */
+}
+
+.formulario span {
+  font-size: 15px; /* Tamanho do texto */
+  font-weight: 800; /* Peso forte */
+}
+
+.formulario input {
+  border: 2px solid #8B0000; /* Borda azul */
+  text-align: center; /* Texto centralizado */
+  border-radius: 10px; /* Borda arredondada */
+  margin: 0; /* Remove margem */
+}
+
+.formulario select {
+  border: 2px solid #8B0000; /* Borda azul */
+  background-color: white; /* Fundo branco */
+  color: gray; /* Cor do texto */
+  height: 36px; /* Altura do campo */
+  text-align: center; /* Texto centralizado */
+  border-radius: 10px; /* Borda arredondada */
+  margin: 0; /* Remove margem */
+}
+
+.campo {
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Direção em coluna */
+  justify-content: start; /* Alinha ao início */
+  padding: 5px 0; /* Espaçamento vertical */
+}
+
+.botao {
+  cursor: pointer; /* Cursor de clique */
+  font-family: "Barlow", sans-serif; /* Fonte */
+  border: 0; /* Sem borda */
+  border-radius: 5px; /* Borda arredondada */
+  font-weight: 600; /* Peso da fonte */
+  font-size: 18px; /* Tamanho da fonte */
+  color: #fff; /* Cor do texto */
+  background-color: #ED145B; /* Cor de fundo */
+  width: 120px; /* Largura do botão */
+  height: 30px; /* Altura do botão */
+  align-self: center; /* Centraliza no eixo do flex container */
+  margin-top: 20px; /* Espaço acima */
+}
+
+.loading-div {
+  width: 50px; /* Largura do container de loading */
+  display: none; /* Inicialmente escondido */
+}
+
+.loading-div img {
+  height: 50px; /* Altura da imagem */
+  width: 50px; /* Largura da imagem */
+}
+
+#div_erros_login {
+  display: none /* Esconde a div de erros inicialmente */
+}
+
+/* FORMULARIO */
+
+.alerta_erro{
+  display: flex; /* Layout flexível */
+  justify-content: flex-end; /* Alinha ao final horizontalmente */
+}
+
+.card_erro {
+  display: none; /* Esconde inicialmente */
+  background-color: #fff; /* Fundo branco */
+  color: black; /* Cor do texto */
+  width: 230px; /* Largura fixa */
+  position: fixed; /* Fixa na tela */
+  border-radius: 4px; /* Borda arredondada */
+  border: #ED145B 3px solid; /* Borda rosa */
+  padding: 10px; /* Espaçamento interno */
+  margin-right: 10%; /* Margem à direita */
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500; /* Peso da fonte médio */
+  font-size: 20px; /* Tamanho da fonte */
+}
+
+.formulario .tipo_campo {
+  font-size: 20px; /* Tamanho da fonte */
+  font-weight: 600 !important; /* Peso da fonte forte */
+}
+
+.formulario {
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Direção em coluna */
+}
+
+input {
+  margin-bottom: 10px; /* Espaço inferior */
+  border: 2px solid #32b9cd; /* Borda azul */
+  padding: 10px; /* Preenchimento interno */
+  text-align: center; /* Texto centralizado */
+  border-radius: 10px; /* Borda arredondada */
+}
+
+.btn {
+  font-family: "Barlow", sans-serif; /* Fonte */
+  border: 0; /* Sem borda */
+  border-radius: 5px; /* Borda arredondada */
+  font-weight: 600; /* Peso da fonte */
+  font-size: 18px; /* Tamanho da fonte */
+  padding: 10px 15px; /* Espaçamento interno */
+  color: white; /* Cor do texto */
+  background-color: #ED145B; /* Cor de fundo */
+  width: 120px; /* Largura fixa */
+  align-self: center; /* Centraliza no flex container */
+  margin-top: 5px; /* Espaçamento acima */
+}
+
+.loading-div {
+  width: 50px; /* Largura do loading */
+  margin: auto; /* Centraliza */
+  display: none; /* Esconde inicialmente */
+}
+
+.loading-div img {
+  height: 50px; /* Altura da imagem */
+  width: 50px; /* Largura da imagem */
+}
+
+/* SIMULADOR */
+
+.simulador {
+  color: white; /* Cor do texto */
+}
+
+.simulador .container {
+  flex-direction: column; /* Layout em coluna */
+  overflow: scroll;  /* Habilita rolagem */
+  height: var(--tamanho-simulador); /* Altura dinâmica */
+}
+
+/* ALERTA */
+
+#alerta {
+  position: absolute; /* Posicionamento absoluto */
+  right: 0; /* Alinha à direita */
+  bottom: 0; /* Alinha ao fundo */
+}
+
+.mensagem-alarme {
+  background-color: white; /* Fundo branco */
+  border-radius: 5px; /* Borda arredondada */
+  width: 300px; /* Largura fixa */
+  height: 80px; /* Altura fixa */
+  margin: 10px; /* Espaço externo */
+  padding: 10px 0; /* Espaço interno vertical */
+  display: flex; /* Layout flexível */
+  justify-content: space-evenly; /* Espaçamento uniforme */
+  align-items: center; /* Alinhamento central */
+}
+
+.mensagem-alarme h3 {
+  font-size: 14px; /* Tamanho da fonte */
+  margin: 0; /* Remove margem */
+}
+
+.mensagem-alarme .informacao {
+  width: 66%; /* Largura relativa */
+}
+
+.alarme-sino {
+  width: 48px; /* Largura do sino */
+  height: 48px; /* Altura do sino */
+  animation-name: bell; /* Nome da animação */
+  animation-duration: 4s; /* Duração da animação */
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png'); /* Ícone do sino */
+  background-size: cover; /* Cobre o elemento */
+  animation-iteration-count: infinite; /* Repetição infinita */
+}
+
+@keyframes bell {
+  0%   {transform: rotate(25deg)} /* Gira para a direita */
+  25%  {transform: rotate(-25deg)} /* Gira para a esquerda */
+  50%  {transform: rotate(25deg)}
+  75%  {transform: rotate(-25deg)}
+  100% {transform: rotate(25deg)}
+}

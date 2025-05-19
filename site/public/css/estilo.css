@@ -13,10 +13,17 @@ body {
   --tamanho-footer: 65px; /* Altura do rodapé */
 }
 
+.Home {
+  background-image: url(../assets/imgs/home_1.png);
+  background-repeat: no-repeat;
+  height: 100vh;  
+  background-size: cover;
+}
 .fundo {
   background-image: url(../assets/imgs/Fundo.png);
-  height: 100vh;
+  height: 100%;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .container {
   display: flex; /* Usa flexbox para o layout */

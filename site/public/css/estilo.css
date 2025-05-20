@@ -131,7 +131,6 @@ body {
   justify-content: left; /* Centraliza conteúdo */
   align-items: center; /* Centraliza verticalmente */
   height: 100%; /* Altura total */
-  background-size: cover;
 }
 
 .card {

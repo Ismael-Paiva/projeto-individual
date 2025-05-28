@@ -1,6 +1,6 @@
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
-
+9
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -58,19 +58,13 @@ function cadastrar(req, res) {
 
     // Faça as validações dos valores
     if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+        res.status(400).send("Seu nome está Indefinido!");
     } else if (email == undefined) {
-        res.status(400).send("Seu CPF está undefined!");
-    } else if (cpf == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu email está Indefinido!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
-    } else {
-
+        res.status(400).send("Sua senha está Indefinido!");
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, fkEmpresa, cpf)
+        usuarioModel.cadastrar(nome, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -208,19 +208,6 @@ body {
   margin-top: 20px; /*Espaço acima*/
 }
 
-.sobre {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: row;  
-}
-.sobre_mim {
-  margin: 0;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-} 
-
 .home_p {
   margin-top: 320px;
   color: #fff;

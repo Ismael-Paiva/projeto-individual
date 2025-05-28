@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Mim - RDR2 Fan</title>
+  <link rel="stylesheet" href="./css/estilo.css" />
+  <link rel="icon" href="./assets/icon/icon01.webp">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fefefe;
+      color: #222;
+    }
+
+    /* HEADER + NAVBAR sem quebra de linha */
+    .header {
+      background-color: #000;
+      padding: 10px 0;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: nowrap;
+      list-style: none;
+      margin: 0;
+      padding: 20px 0;
+      gap: 10px;
+    }
+
+    .navbar li {
+      display: inline;
+    }
+
+    .navbar a {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .navbar a:hover {
+      color: #fff;
+    }
+
+    .navbar .agora {
+      color: #c00;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
+    .main {
+      padding: 50px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .box {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .box h2 {
+      color: #8b0000;
+      margin-top: 0;
+    }
+
+    .box ul {
+      padding-left: 20px;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta button {
+      background-color: #8b0000;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .cta button:hover {
+      background-color: #a30000;
+    }
+
+    .footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body class="sobre">
+  <!-- NAVBAR -->
+  <div class="header">
+    <div class="container">
+      <div class="titulo"></div>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre_mim.html" class="agora">Sobre mim</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="main">
+    <div class="box">
+      <h2>Sobre mim</h2>
+      <p>Desde pequeno, os videogames fazem parte da minha vida. Sempre fui apaixonado por histórias imersivas, mundos diferentes e a emoção de viver aventuras intensas.</p>
+    </div>
+
+    <div class="box">
+      <h2>Minha conexão com os games</h2>
+      <p>Os jogos sempre foram mais que diversão. Me ajudaram a crescer, a refletir, a sonhar. Eles moldaram meu jeito de pensar e de enxergar o mundo.</p>
+    </div>
+
+    <div class="box">
+      <h2>Red Dead Redemption 2 mudou minha vida</h2>
+      <p>RDR2 não é só um jogo — é uma experiência marcante. A jornada de Arthur Morgan mexeu comigo de um jeito único. Aprendi sobre redenção, humanidade e escolhas.</p>
+    </div>
+
+    <div class="box">
+      <h2>Lições que levei do jogo</h2>
+      <ul>
+        <li>Mesmo em tempos difíceis, há espaço para compaixão.</li>
+        <li>As escolhas moldam quem somos.</li>
+        <li>Mudar é sempre possível, por mais tarde que pareça.</li>
+      </ul>
+    </div>
+
+    <div class="box cta">
+      <h2>Gostou da minha história?</h2>
+      <p>Se você também é apaixonado por RDR2 ou quer descobrir mais sobre o jogo, cadastre-se e acompanhe os conteúdos!</p>
+      <a href="cadastro.html"><button>Quero me cadastrar</button></a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>2025 Red Dead Redemption 2 Fan Site | Desenvolvido por Ismael</p>
+  </div>
+</body>
+</html>

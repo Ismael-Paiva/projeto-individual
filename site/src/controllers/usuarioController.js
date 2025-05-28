@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+// var aquarioModel = require("../models/aquarioModel");
 9
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -63,7 +63,7 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está Indefinido!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está Indefinido!");
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    } else {
         usuarioModel.cadastrar(nome, email, senha)
             .then(
                 function (resultado) {

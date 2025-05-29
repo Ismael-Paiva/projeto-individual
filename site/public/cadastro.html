@@ -14,7 +14,7 @@
   <div class="fundo">
   <div class="header">
     <div class="container">
-      <h1 class="titulo"></h1>
+      <h1 onclick="home()" class="titulo"></h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Home</a>
@@ -67,6 +67,9 @@
 </body>
 </html>
 <script>
+  function home(){
+  window.location = "index.html";
+  }
   function cadastrar() {
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;

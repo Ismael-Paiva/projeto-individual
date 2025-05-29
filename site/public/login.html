@@ -18,8 +18,8 @@
 <body>
     <div class="fundo">
     <div class="header">
-        <div class="container">
-            <h1 class="titulo"></h1>
+        <div  class="container">
+            <h1 class="titulo" onclick="home()"></h1>
             <ul class="navbar">
                 <li>
                     <a href="index.html">Home</a>
@@ -68,7 +68,9 @@
 </html>
 
 <script>
-
+    function home(){
+    window.location = "index.html";
+    }
 
     function entrar() {
         aguardar();

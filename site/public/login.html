@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body class="cadastro">
     <div class="fundo">
     <div class="header">
         <div  class="container">
@@ -58,7 +58,7 @@
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
-                <div id="div_erros_login"></div>
+                <div id="mensagem_erro"></div>
             </div>
         </div>
     </div>
@@ -73,15 +73,13 @@
     }
 
     function entrar() {
-        aguardar();
-
+        // aguardar();
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
-
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            mensagem_erro.innerHTML = "Por favor preencha todos os campos.";
+            // finalizarAguardar();
             return false;
         }
         
@@ -109,9 +107,7 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading

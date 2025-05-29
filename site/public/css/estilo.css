@@ -3,6 +3,12 @@ body {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif; /* Define a hierarquia de fontes */
   background-color: transparent; /* Define o fundo da página como transparente */
 }
+.cadastro {
+  margin: 0; /* Remove a margem padrão da página */
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif; /* Define a hierarquia de fontes */
+  background-color: transparent; /* Define o fundo da página como transparente */
+  overflow: hidden;
+}
 
 :root {
   --tamanho-header: 80px; /* Altura do cabeçalho */
@@ -32,7 +38,8 @@ body {
 
 .header {
   height: var(--tamanho-header); /* Altura do cabeçalho */
-  border-bottom: 2px solid #C19A6B; /* Borda inferior azul */
+ /* border-bottom: 2px solid #C19A6B;  Borda inferior azul */
+  padding-top: 8px;
 }
 
 .header .container {
@@ -44,6 +51,7 @@ body {
 .header a {
   text-decoration: none; /* Remove sublinhado de links */
   color: #7B1E1E; /* Cor dos links */
+  font-size: 17px;
 }
 
 .agora {
@@ -83,7 +91,7 @@ body {
 .banner .container p {
   width: 50%; /* Largura do parágrafo */
   margin: 0; /* Remove margens */
-  padding: 0; /* Remove padding */
+  padding: 15px; /* Remove padding */
   font-size: 36px; /* Tamanho da fonte */
   margin-top: 40px;
 }
@@ -214,6 +222,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 6px;
+  padding: 15x;
 }

@@ -118,9 +118,19 @@ button:hover {
 }
 
 /* Rodapé */
-footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  color: #666;
+.footer {
+  height: 150px; /* Altura do rodapé */
+  color: #fff; /* Cor do texto */
+  display: flex; /* Layout flexível */
+  font-size: 15px; /* Tamanho da fonte */
+  background-color: #000;
+}
+
+.footer .container {
+  justify-content: center; /* Centraliza conteúdo */
+  text-align: center; /* Centraliza texto */
+}
+
+.footer .container .version {
+  font-size: 12px; /* Tamanho menor para versão */
 }

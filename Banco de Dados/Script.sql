@@ -1,6 +1,5 @@
 create database projeto_individual;
 use projeto_individual;
-
 create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar (80),
@@ -12,6 +11,22 @@ idCapitulos int primary key auto_increment,
 nome varchar (100),
 descricao varchar (200));
 
+create table quiz (
+idQuiz int primary key auto_increment,
+nome varchar (45),
+nivel varchar (15),
+constraint chknivel check (nivel in('Fácil', 'Médio', 'Difícil'))
+);
+
+create table tentativas (
+idTentativas int auto_increment,
+fkIdQuiz int,
+fkIdUsuarioQuiz int,
+constraint pkcomposta primary key (idTentativas, fkIdQuiz, fkIdUsuarioQuiz),
+dtTentativa timestamp default current_timestamp,
+pontuação int,
+jogado TINYINT);
+ 
 create table visualizacao (
 idVizualizacao int,
 fkIdCapitulos int,
@@ -30,3 +45,8 @@ insert into capitulos (nome , descricao) values
 ('Capítulo 6: Beaver Hollow', 'Arthur enfrenta a decadência da gangue, a tirania de Dutch e sua própria mortal doença.'),
 ('Epílogo Parte 1: Pronghorn Ranch', 'Anos depois, John Marston tenta uma nova vida como fazendeiro com sua família.'),
 ('Epílogo Parte 2: Beechers Hope', 'John confronta os fantasmas do passado para construir um futuro estável para sua família.');
+
+insert into quiz (nome , nivel) values 
+('O Início da Trilha', 'Fácil'),
+('Procurado Vivo ou Morto', 'Médio'),
+('A Última Cavalgada', 'Difícil');

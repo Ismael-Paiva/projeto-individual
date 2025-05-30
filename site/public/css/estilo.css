@@ -100,15 +100,7 @@ body {
   font-weight: 800; /* Destaca o texto */
 }
 
-.box img {
-  width: 300px; /* Define largura das imagens */
-}
 
-.box {
-  display: flex; /* Layout flexível */
-  flex-direction: column; /* Direção em coluna */
-  align-items: center; /* Centraliza itens */
-}
 
 /* FOOTER */
 
@@ -117,6 +109,7 @@ body {
   color: #fff; /* Cor do texto */
   display: flex; /* Layout flexível */
   font-size: 15px; /* Tamanho da fonte */
+  background-color: #000;
 }
 
 .footer .container {
@@ -226,3 +219,49 @@ body {
   border-radius: 6px;
   padding: 15x;
 }
+.main {
+      padding: 50px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .box {
+      display: flex; /* Layout flexível */
+      flex-direction: column; /* Direção em coluna */
+      align-items: center; /* Centraliza itens */
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .box h2 {
+      color: #8b0000;
+      margin-top: 0;
+    }
+
+    .box ul {
+      padding-left: 20px;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta button {
+      background-color: #8b0000;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .cta button:hover {
+      background-color: #a30000;
+    }

@@ -265,3 +265,30 @@ body {
     .cta button:hover {
       background-color: #a30000;
     }
+
+.destaques .container{
+flex-direction: column; 
+align-items: center; 
+padding: 40px 0;
+}
+
+.destaques .container h2{
+color: #8b0000;
+margin-bottom: 30px;
+}
+
+.destaques .container .imgs{
+display: flex; 
+gap: 30px; 
+flex-wrap: wrap; 
+justify-content: center;
+}
+
+.destaques .container .imgs .box img {
+height: 300px;
+width: 300px;
+}
+
+.destaques .container .imgs .box h3 {
+color: black;
+}

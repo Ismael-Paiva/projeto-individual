@@ -1,0 +1,126 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo mais claro */
+body {
+  background-color: #fdfcf9;
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+/* Barra superior */
+.top-bar {
+  position: relative;
+  width: 100%;
+}
+
+.top-bar img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Menu sobre a imagem */
+.menu {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.menu a {
+  color: #8B0000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #FFD700;
+}
+
+/* Conteúdo central */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Cabeçalho */
+header h1 {
+  color: #B22222;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #FFD700;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Cards */
+.card {
+  background-color: #fff;
+  border-left: 6px solid #A52A2A;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px #00000022;
+}
+
+.card.destaque {
+  border-left-color: #FFD700;
+  background-color: #fffaf2;
+}
+
+.card h2 {
+  color: #8B0000;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.card p,
+.card ul {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.card ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.card ul li {
+  margin-bottom: 8px;
+}
+
+/* Botão */
+button {
+  background-color: #B22222;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #7B1E1E;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}

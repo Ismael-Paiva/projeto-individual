@@ -8,14 +8,12 @@ body {
   overflow: hidden;
 }
 
-/* Layout geral */
 .pagina {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
-/* Barra lateral esquerda */
 .janela {
   width: 16%;
   height: 100vh;
@@ -37,7 +35,6 @@ body {
   text-shadow: 1px 1px 4px #000;
 }
 
-/* Botões do menu */
 .btn-nav, .btn-logout {
   width: 100px;
   margin: 20px 0;
@@ -68,7 +65,6 @@ body {
   color: #2a1f00;
 }
 
-/* Botão sair */
 .btn-logout {
   background-color: #7a1f1f;
   color: #f0e6d2;
@@ -88,12 +84,10 @@ body {
   color: #fff;
 }
 
-/* Pequeno efeito no primeiro botão */
 .btn-nav:first-child {
   margin-bottom: 30px;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   .janela {
     width: 100%;
@@ -116,7 +110,6 @@ body {
   }
 }
 
-/* Logo no topo */
 .Titulo {
   background-image: url(../assets/imgs/Logo.png);
   background-size: cover;
@@ -124,7 +117,6 @@ body {
   width: 200px;
 }
 
-/* Conteúdo ao lado da navbar */
 .conteudo {
   width: 85%;
   height: 100vh;
@@ -150,7 +142,6 @@ body {
   justify-content: center
 }
 
-/* Estilo dos rótulos e inputs */
 .form-container label {
   align-items: center;
   font-size: 1.1em;
@@ -167,7 +158,6 @@ body {
   color: #2a1f00;
 }
 
-/* Botão de envio */
 .form-container button {
   padding: 12px;
   border: none;

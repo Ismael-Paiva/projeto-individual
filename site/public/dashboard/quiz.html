@@ -24,9 +24,9 @@
 
     <div class="conteudo">
       <div class="quiz-escolha">
-        <button onclick="escolherQuiz(1)">Quiz 1 - Nível Fácil</button>
-        <button onclick="escolherQuiz(2)">Quiz 2 - Nível Médio</button>
-        <button onclick="escolherQuiz(3)">Quiz 3 - Nível Difícil</button>
+        <button onclick="escolherQuiz(0)">Quiz 1 - Nível Fácil</button>
+        <button onclick="escolherQuiz(1)">Quiz 2 - Nível Médio</button>
+        <button onclick="escolherQuiz(2)">Quiz 3 - Nível Difícil</button>
       </div>
     
 
@@ -44,13 +44,15 @@
           <button id="D" onclick="verificarResposta('D')">D</button>
         </div>
         <button id="btnProxima" style="display:none;" onclick="proximaPergunta()">Próxima Pergunta</button>
-      </div>
+    </div>
+    <div id="mensagem_erro"></div>
     </div>
   </div>
   </div>
 </html>
 
     <script>
+        var idVar = sessionStorage.getItem('ID_USUARIO');
       
         const quizzes = [
             [            
@@ -219,7 +221,7 @@
             ],
              [
                 {
-                    pergunta: "Qual é o nome compvaro do personagem Sadie?",
+                    pergunta: "Qual é o sobrenome da personagem Sadie?",
                     A: "Sadie Burns",
                     B: "Sadie Adler",
                     C: "Sadie Morgan",
@@ -304,6 +306,7 @@
         var questoes = [];
         var indiceAtual = 0;
         var pontos = 0;
+        var numeros;
 
         function mostrarMenu() {
             document.getElementById('pontuacaoEJogo').style.display = 'none';
@@ -311,6 +314,7 @@
 
         function escolherQuiz(numero) {
             questoes = quizzes[numero];
+            numeros = numero
             indiceAtual = 0;
             pontos = 0;
             document.getElementById("placar").innerText = pontos;
@@ -339,7 +343,7 @@
             });
         }
 
-        function verificarResposta(varra) {
+    function verificarResposta(varra) {
   var q = questoes[indiceAtual];
   var botao = document.getElementById(varra);
 
@@ -374,8 +378,33 @@ function proximaPergunta() {
 
 function finalizarQuiz() {
   alert("Quiz finalizado! Pontuação: " + pontos);
-  window.location.reload();
-}
+  fetch(`/quiz/fazerquiz/${idVar}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pontuacaoServer: pontos,
+        fkServer: (numeros + 1)
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          mensagem_erro.innerHTML =
+          "Informações guardada com sucesso";
+          setTimeout(() => {
+          window.location.reload();
+          }, "2000");
+        } else {
+          throw "Houve um erro ao inserir as informações";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+    }
 </script>
 </body>
 </html>

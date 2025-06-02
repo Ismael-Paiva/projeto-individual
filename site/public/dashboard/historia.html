@@ -12,7 +12,6 @@
 </head>
 <body onload="validarSessao()">
     <div class="pagina">
-        <!-- Navbar lateral -->
                 <div class="janela">
             <div class="Titulo" onclick="voltar()"></div>
             <br>
@@ -84,7 +83,7 @@
   var titulo = document.getElementById("tituloImagem");
   var conteudoHistoria = document.getElementById("historiaCapitulo");
   var capituloSelecionado = 0;
-  var conteudoSalvo = ""; // armazena temporariamente o conteúdo
+  var conteudoSalvo = ""; 
 
   var capitulos = {
     1: {
@@ -252,7 +251,7 @@ function mostrarCapitulo(numero) {
   });
 
   conteudoHistoria.innerHTML = htmlMiss;
-  conteudoHistoria.style.display = "block"; // exibe a div quando clicado
+  conteudoHistoria.style.display = "block"; 
   conteudoSalvo = htmlMiss;
 }
 
@@ -262,7 +261,7 @@ function mudarFundo(imagem, tituloTexto) {
   titulo.style.opacity = 1;
 
   if (capituloSelecionado !== 0) {
-    conteudoHistoria.style.display = "none"; // esconde temporariamente
+    conteudoHistoria.style.display = "none";
   }
 }
 
@@ -273,16 +272,16 @@ function restaurarFundo() {
     titulo.innerText = cap.titulo;
     titulo.style.opacity = 1;
     conteudoHistoria.innerHTML = conteudoSalvo;
-    conteudoHistoria.style.display = "block"; // mostra novamente
+    conteudoHistoria.style.display = "block";
   } else {
     document.querySelector('.conteudo').style.backgroundImage = `url('${imagemPadrao}')`;
     titulo.style.opacity = 0;
     conteudoHistoria.innerHTML = "";
-    conteudoHistoria.style.display = "none"; // esconde se nenhum capítulo foi clicado
+    conteudoHistoria.style.display = "none"; 
   }
   }
 
   function toggleLido(capitulo) {
-    
+
 }
 </script>

@@ -1,69 +1,63 @@
 body {
-  margin: 0; /* Remove a margem padrão da página */
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif; /* Define a hierarquia de fontes */
-  background-color: transparent; /* Define o fundo da página como transparente */
-}
-.cadastro {
-  margin: 0; /* Remove a margem padrão da página */
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif; /* Define a hierarquia de fontes */
-  background-color: transparent; /* Define o fundo da página como transparente */
-  overflow: hidden;
+  margin: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
 }
 
-:root {
-  --tamanho-header: 80px; /* Altura do cabeçalho */
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px); /* Altura do banner dinâmica */
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px); /* Altura do simulador dinâmica */
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px); /* Altura do login dinâmica */
-  --tamanho-footer: 65px; /* Altura do rodapé */
+.cadastro {
+  margin: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', sans-serif, Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  overflow: hidden;
 }
 
 .Home {
   background-image: url(../assets/imgs/home.jpg);
   background-repeat: no-repeat;
-  height: 100vh;  
+  height: 100vh;
   background-size: cover;
 }
+
 .fundo {
   background-image: url(../assets/imgs/Fundo.png);
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .container {
-  display: flex; /* Usa flexbox para o layout */
-  width: 80%; /* Largura de 80% da tela */
-  margin: auto; /* Centraliza horizontalmente */
+  display: flex;
+  width: 80%;
+  margin: auto;
 }
 
 .header {
-  height: var(--tamanho-header); /* Altura do cabeçalho */
- /* border-bottom: 2px solid #C19A6B;  Borda inferior azul */
+  height: var(--tamanho-header);
   padding-top: 8px;
 }
 
 .header .container {
-  justify-content: space-between; /* Espaça os elementos no container */
-  align-items: center; /* Alinha os itens verticalmente ao centro */
-  height: 100%; /* Altura total do container pai */
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 .header a {
-  text-decoration: none; /* Remove sublinhado de links */
-  color: #7B1E1E; /* Cor dos links */
+  text-decoration: none;
+  color: #7B1E1E;
   font-size: 17px;
 }
 
 .agora {
-  font-weight: 800; /* Peso da fonte mais forte */
+  font-weight: 800;
 }
 
 .navbar {
-  width: 300px; /* Largura da navbar */
-  display: flex; /* Layout flexível */
-  align-items: center; /* Alinha os itens ao centro verticalmente */
-  justify-content: space-between; /* Espaçamento entre os itens */
-  list-style: none; /* Remove marcadores de lista */
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
   background-color: transparent;
 }
 
@@ -75,138 +69,131 @@ body {
 }
 
 .header h1 {
-  margin: 0; /* Remove margens do título */
+  margin: 0;
 }
 
 .banner {
-  height: var(--tamanho-banner); /* Altura do banner */
+  height: var(--tamanho-banner);
 }
 
 .banner .container {
-  justify-content: center; /* Centraliza conteúdo horizontalmente */
-  align-items: flex-start; /* Centraliza verticalmente */
-  height: 100%; /* Altura total do banner */
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
 }
 
 .banner .container p {
-  width: 50%; /* Largura do parágrafo */
-  margin: 0; /* Remove margens */
-  padding: 15px; /* Remove padding */
-  font-size: 36px; /* Tamanho da fonte */
+  width: 50%;
+  margin: 0;
+  padding: 15px;
+  font-size: 36px;
   margin-top: 40px;
 }
 
 .banner .container span {
-  font-weight: 800; /* Destaca o texto */
+  font-weight: 800;
 }
 
-
-
-/* FOOTER */
-
 .footer {
-  height: 150px; /* Altura do rodapé */
-  color: #fff; /* Cor do texto */
-  display: flex; /* Layout flexível */
-  font-size: 15px; /* Tamanho da fonte */
+  height: 150px;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
   background-color: #000;
 }
 
 .footer .container {
-  justify-content: center; /* Centraliza conteúdo */
-  text-align: center; /* Centraliza texto */
+  justify-content: center;
+  text-align: center;
 }
 
 .footer .container .version {
-  font-size: 12px; /* Tamanho menor para versão */
+  font-size: 12px;
 }
 
-/* LOGIN */
-
 .login {
-  height: 100vh; 
-  /* background-size: cover; Cobre toda a área */
+  height: 100vh;
 }
 
 .login .container {
-  justify-content: left; /* Centraliza conteúdo */
-  align-items: center; /* Centraliza verticalmente */
-  height: 100%; /* Altura total */
+  justify-content: left;
+  align-items: center;
+  height: 100%;
 }
 
 .card {
-  width: 50%; /* Metade da largura da tela */
-  background-color: rgba(0, 0, 0, 60%); 
-  border-radius: 10px; /* Borda arredondada */
-  display: flex; /* Layout flexível */
-  align-items: center; /* Alinha itens */
-  justify-content: space-evenly; /* Espaça itens igualmente */
-  color: #C4A484; /* Cor do texto */
-  flex-direction: column; /* Direção em coluna */
-  height: fit-content; /* Altura ajustada ao conteúdo */
-  padding: 30px 0; /* Espaçamento vertical */
+  width: 50%;
+  background-color: rgba(0, 0, 0, 60%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #C4A484;
+  flex-direction: column;
+  height: fit-content;
+  padding: 30px 0;
 }
 
 .card h2 {
-  margin: 0; /* Remove margem */
-  font-size: 40px; /* Tamanho da fonte */
+  margin: 0;
+  font-size: 40px;
 }
 
 .formulario {
-  display: flex; /* Layout flexível */
-  height: 90%; /* Altura relativa */
-  width: 80%; /* Largura relativa */
-  justify-content: space-around; /* Espaçamento uniforme */
-  flex-direction: column; /* Direção em coluna */
-  color: white; /* Cor do texto */
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+  color: white;
 }
 
 .formulario span {
-  font-size: 15px; /* Tamanho do texto */
-  font-weight: 900; /* Peso forte */
+  font-size: 15px;
+  font-weight: 900;
 }
 
 .formulario input {
-  border: 2px solid #C4A484; /* Borda azul */
-  text-align: center; /* Texto centralizado */
-  border-radius: 10px; /* Borda arredondada */
-  margin: 0; /* Remove margem */
+  border: 2px solid #C4A484;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
 }
 
 .formulario select {
-  border: 2px solid #C4A484; /* Borda azul */
-  background-color: white; /* Fundo branco */
-  color: gray; /* Cor do texto */
-  height: 50px; /* Altura do campo */
-  text-align: center; /* Texto centralizado */
-  border-radius: 10px; /* Borda arredondada */
-  margin: 0; /* Remove margem */
+  border: 2px solid #C4A484;
+  background-color: white;
+  color: gray;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
 }
 
 .campo {
-  display: flex; /* Layout flexível */
-  flex-direction: column; /* Direção em coluna */
-  justify-content: start; /* Alinha ao início */
-  padding: 5px 0; /* Espaçamento vertical */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
 }
 
 .campo input {
-  height: 30px; /*Tamanho das input's*/
+  height: 30px;
 }
 
 .botao {
-  cursor: pointer; /*Cursor de clique*/
-  font-family: "Barlow", sans-serif; /*Fonte*/
-  border: 0; /*Sem borda*/
-  border-radius: 5px; /*Borda arredondada*/
-  font-weight: 600; /*Peso da fonte*/
-  font-size: 18px; /*Tamanho da fonte*/
-  color: #fff; /*Cor do texto*/
-  background-color: #8B0000; /*Cor de fundo*/
-  width: 120px; /*Largura do botão*/
-  height: 30px; /*Altura do botão*/
-  align-self: center; /*Centraliza no eixo do flex container*/
-  margin-top: 20px; /*Espaço acima*/
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: #8B0000;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
 }
 
 .home_p {
@@ -219,76 +206,77 @@ body {
   border-radius: 6px;
   padding: 15x;
 }
+
 .main {
-      padding: 50px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .box {
-      display: flex; /* Layout flexível */
-      flex-direction: column; /* Direção em coluna */
-      align-items: center; /* Centraliza itens */
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .box h2 {
-      color: #8b0000;
-      margin-top: 0;
-    }
-
-    .box ul {
-      padding-left: 20px;
-    }
-
-    .cta {
-      text-align: center;
-    }
-
-    .cta button {
-      background-color: #8b0000;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .cta button:hover {
-      background-color: #a30000;
-    }
-
-.destaques .container{
-flex-direction: column; 
-align-items: center; 
-padding: 40px 0;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.destaques .container h2{
-color: #8b0000;
-margin-bottom: 30px;
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.destaques .container .imgs{
-display: flex; 
-gap: 30px; 
-flex-wrap: wrap; 
-justify-content: center;
+.box h2 {
+  color: #8b0000;
+  margin-top: 0;
+}
+
+.box ul {
+  padding-left: 20px;
+}
+
+.cta {
+  text-align: center;
+}
+
+.cta button {
+  background-color: #8b0000;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cta button:hover {
+  background-color: #a30000;
+}
+
+.destaques .container {
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.destaques .container h2 {
+  color: #8b0000;
+  margin-bottom: 30px;
+}
+
+.destaques .container .imgs {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .destaques .container .imgs .box img {
-height: 300px;
-width: 300px;
+  height: 300px;
+  width: 300px;
 }
 
 .destaques .container .imgs .box h3 {
-color: black;
+  color: black;
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Dead Redemption 2 | Seu Perfil</title>
-    <link rel="stylesheet" href="../css/Seu_perfil.css">
+    <link rel="stylesheet" href="../css/Mudar_perfil.css">
     <link rel="icon" href="../assets/icon/icon01.webp">
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
@@ -16,7 +16,7 @@
     <div class="pagina">
         <!-- Navbar lateral -->
         <div class="janela">
-            <div class="Titulo"></div>
+            <div class="Titulo" onclick="voltar()"></div>
             <br>
             <div class="navbar">
                 <h1>Olá, <span id="b_usuario"></span></h1>
@@ -27,10 +27,12 @@
                 <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
             </div>
         </div>
-
-        <!-- Conteúdo ao lado da navbar -->
         <div class="conteudo"></div>
     </div>
 </body>
-
 </html>
+<script>
+    function voltar(){
+     window.location = "Seu_perfil.html";   
+    }
+</script>

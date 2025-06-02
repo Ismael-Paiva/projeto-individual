@@ -128,7 +128,7 @@ body {
 .conteudo {
   width: 85%;
   height: 100vh;
-  background: url('../assets/imgs/fundo.webp') no-repeat center center;
+  background: url('') no-repeat center center;
   background-size: cover;
   padding: 40px;
   overflow-y: auto;

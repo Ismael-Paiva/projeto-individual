@@ -5,12 +5,298 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red dead redemption 2 | Seu Perfil</title>
-    <link rel="stylesheet" href="../css/Seu_perfil.css">
+    <link rel="stylesheet" href="../css/historia.css">
     <link rel="icon" href="../assets/icon/icon01.webp">
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
 </head>
 <body>
-    
+    <div class="pagina">
+        <!-- Navbar lateral -->
+        <div class="janela">
+            <div class="Titulo"></div>
+            <br>
+            <div class="navbar">
+                <h1>Olá, <span id="b_usuario"></span></h1>
+                <div class="btn-nav"><a href="./historia.html"><h3>História</h3></a></div>
+                <div class="btn-nav"><a href="./quiz.html"><h3>Quiz</h3></a></div>
+                <div class="btn-nav"><a href="./dashboard.html"><h3>Painel</h3></a></div>
+                <div class="btn-nav"><a href="./Mudar_perfil.html"><h3>Mudar perfil</h3></a></div>
+                <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
+            </div>
+        </div>
+
+       <div class="conteudo" id="conteudoFundo">
+        <div class="titulo-imagem" id="tituloImagem"></div>
+        <div id="historiaCapitulo" class="historia-capitulo"></div>
+       </div>
+
+    </div>
+    <div class="botoes-fundo">
+        <div class="capitulo-container">
+            <button onclick="mostrarCapitulo(1)" onmouseover="mudarFundo('../assets/fundos/img1.webp', 'Colter')" onmouseout="restaurarFundo()">Capítulo 1</button>
+            <button class="botoes-baixo" id="btnLido1" onclick="toggleLido(1)">Lido</button>
+        </div>
+        <div class="capitulo-container">
+            <button onclick="mostrarCapitulo(2)" onmouseover="mudarFundo('../assets/fundos/img2.webp', 'Horseshoe Overlook')" onmouseout="restaurarFundo()">Capítulo 2</button>
+            <button class="botoes-baixo" id="btnLido2" onclick="toggleLido(2)">Lido</button>
+        </div>
+        <div class="capitulo-container">    
+            <button onclick="mostrarCapitulo(3)" onmouseover="mudarFundo('../assets/fundos/img3.webp', 'Clemens Point')" onmouseout="restaurarFundo()">Capítulo 3</button>
+            <button class="botoes-baixo" id="btnLido3" onclick="toggleLido(3)">Lido</button>
+        </div>
+        <div class="capitulo-container">    
+            <button onclick="mostrarCapitulo(4)" onmouseover="mudarFundo('../assets/fundos/img4.webp', 'Saint Denis')" onmouseout="restaurarFundo()">Capítulo 4</button>
+            <button class="botoes-baixo" id="btnLido4" onclick="toggleLido(4)">Lido</button>
+        </div>
+        <div class="capitulo-container">
+            <button onclick="mostrarCapitulo(5)" onmouseover="mudarFundo('../assets/fundos/img5.jpg', 'Guarma')" onmouseout="restaurarFundo()">Capítulo 5</button>
+            <button class="botoes-baixo" id="btnLido5" onclick="toggleLido(5)">Lido</button>
+        </div>
+        <div class="capitulo-container">
+            <button onclick="mostrarCapitulo(6)" onmouseover="mudarFundo('../assets/fundos/img6.jpg', 'Beaver Hollow')" onmouseout="restaurarFundo()">Capítulo 6</button>
+            <button class="botoes-baixo" id="btnLido6" onclick="toggleLido(6)">Lido</button>
+        </div>
+        <div class="capitulo-container">
+            <button onclick="mostrarCapitulo(7)" onmouseover="mudarFundo('../assets/fundos/img7.jpg', 'Pronghorn Ranch')" onmouseout="restaurarFundo()">Epílogo Parte 1</button>
+            <button class="botoes-baixo" id="btnLido7" onclick="toggleLido(7)">Lido</button>
+        </div>
+        <div class="capitulo-container">
+            <button onclick="mostrarCapitulo(8)" onmouseover="mudarFundo('../assets/fundos/img8.webp', `Beecher's Hope`)" onmouseout="restaurarFundo()">Epílogo Parte 2</button>
+            <button class="botoes-baixo" id="btnLido8" onclick="toggleLido(8)">Lido</button>
+        </div>
+</div>
+
 </body>
 </html>
+<script>
+  var imagemPadrao = "../assets/imgs/fundo.webp";
+  var titulo = document.getElementById("tituloImagem");
+  var conteudoHistoria = document.getElementById("historiaCapitulo");
+  var capituloSelecionado = 0;
+  var conteudoSalvo = ""; // armazena temporariamente o conteúdo
+
+  var capitulos = {
+    1: {
+      imagem: "../assets/fundos/img1.webp",
+      titulo: "Colter",
+      missoes: [
+        { titulo: "Missão 1.1 Êxodo na América", resumo: "A gangue Van der Linde, após um assalto fracassado em Blackwater, busca refúgio nas montanhas de Ambarino durante uma nevasca intensa. Eles se estabelecem em uma cabana abandonada chamada Colter, tentando sobreviver às condições adversas" },
+
+        { titulo: "Missão 1.2 Enter, Pursued by a Memory", resumo: "Arthur Morgan e Javier Escuella partem em busca de John Marston, desaparecido durante uma expedição. Eles o encontram ferido após um ataque de lobos e o resgatam, enfrentando o clima severo e os predadores."},
+
+        { titulo: "Missão 1.3 Old Friends", resumo: "Dutch lidera um ataque ao acampamento dos O'Driscolls, gangue rival, após descobrir que Colm O'Driscoll planeja emboscá-los. O confronto resulta em baixas para os O'Driscolls e na captura de um de seus membros, Kieran Duffy."},
+
+        { titulo: "Missão 1.4 The Aftermath of Genesis", resumo: "Com os suprimentos escassos, Arthur e Charles Smith saem para caçar. Eles conseguem abater um cervo, garantindo alimento para a gangue e fortalecendo os laços entre os membros."},
+
+        { titulo: "Missão 1.5 Who the Hell is Leviticus Cornwall?", resumo: "A gangue intercepta um trem pertencente ao magnata Leviticus Cornwall, obtendo uma quantia significativa de dinheiro. Esse roubo atrai a atenção de Cornwall, que posteriormente contratará agentes para caçar a gangue."},
+
+        { titulo: "Missão 1.6 Eastward Bound", resumo: "Com a melhora do clima, a gangue decide deixar Colter em busca de um local mais seguro e promissor, iniciando sua jornada rumo a Horseshoe Overlook."}
+    ]
+    },
+    2: {
+      imagem: "../assets/fundos/img2.webp",
+      titulo: "Horseshoe Overlook",
+      missoes: [
+        { titulo: "Missão 2.1 Polite Society, Valentine Style", resumo: "Arthur acompanha algumas mulheres da gangue até a cidade de Valentine para comprar suprimentos e explorar. A missão serve como introdução à cidade e termina com uma briga no salão." },
+
+        { titulo: "Missão 2.2 Americans at Rest", resumo: "Arthur e Javier encontram Sean preso em Valentine. Após uma briga no bar, eles localizam o paradeiro do amigo e iniciam os planos de resgate." },
+
+        { titulo: "Missão 2.3 Exit Pursued by a Bruised Ego", resumo: "Arthur ajuda Hosea Matthews a caçar um lendário urso pardo, enquanto discutem os planos futuros da gangue. Durante a missão, o jogador pode optar por continuar caçando o urso ou deixar para depois." },
+
+        { titulo: "Missão 2.4 A Quiet Time", resumo: "Arthur e Lenny vão ao bar beber e acabam se embriagando pesadamente, causando confusão em Valentine. É uma das missões mais leves e divertidas do jogo." },
+
+        { titulo: "Missão 2.5 Who is Not Without Sin", resumo: "Arthur encontra o reverendo Swanson embriagado e fora de controle. Ele o salva de ser atropelado por um trem e de ser agredido, mostrando o lado protetor de Arthur." },
+
+        { titulo: "Missão 2.6 The Spines of America", resumo: "Hosea e Arthur aplicam um golpe envolvendo a venda de uma carruagem roubada. A missão introduz o mercado clandestino de bens roubados e o vendedor Seamus." },
+
+        { titulo: "Missão 2.7 Money Lending and Other Sins I, II & III", resumo: "Arthur realiza cobranças de dívidas para Leopold Strauss. Durante essas visitas, Arthur vê as consequências da cobrança para pessoas pobres, especialmente Thomas Downes (um evento que impactará profundamente a história)." },
+
+        { titulo: "Missão 2.8 Paying a Social Call", resumo: "Arthur, Bill, e Micah interrogam Kieran Duffy e o usam para localizar um acampamento dos O'Driscolls. Lá, realizam um ataque e encontram pistas sobre Colm O'Driscoll." },
+
+        { titulo: "Missão 2.9 A Fisher of Men", resumo: "Arthur leva Jack, filho de John Marston, para pescar. É uma missão calma, mas cheia de significado, revelando o lado paterno de Arthur e seu vínculo com a criança." },
+
+        { titulo: "Missão 2.10 The Sheep and the Goats", resumo: "Arthur e John roubam um rebanho de ovelhas e o vendem. Eles então encontram Dutch e tentam vender as peles no leilão, mas um tiroteio com agentes Pinkerton os obriga a fugir." },
+
+        { titulo: "Missão 2.11 We Loved Once and True I, II & III", resumo: "Arthur encontra Mary Linton, seu antigo amor. Ela pede sua ajuda para salvar seu irmão de um culto. Essa missão aprofunda o passado de Arthur e seus sentimentos pessoais." },
+
+        { titulo: "Missão 2.12 Blessed are the Meek?", resumo: "Arthur invade a prisão de Valentine para resgatar Micah. O resgate resulta em um massacre e incêndio na cidade, demonstrando o comportamento imprevisível e violento de Micah." },
+
+        { titulo: "Missão 2.13 Pouring Forth Oil I, II, III & IV", resumo: "Uma série de missões envolvendo o roubo de um trem usando vagões-tanque cheios de óleo. A preparação e execução mostram o planejamento estratégico de Dutch e da gangue." },
+
+        { titulo: "Missão 2.14 A Strange Kindness", resumo: "Após o confronto com os Pinkertons e a cidade de Valentine se tornar perigosa, a gangue decide deixar Horseshoe Overlook e buscar um novo local para acampamento." }
+      ]
+    },
+    3: {
+    imagem: "../assets/fundos/img3.webp",
+    titulo: "Clemens Point",
+    missoes: [
+    { titulo: "Missão 3.1 The New South", resumo: "Arthur pesca com Dutch e Hosea enquanto a gangue tenta se firmar em Lemoyne." },
+    { titulo: "Missão 3.2 Further Questions of Female Suffrage", resumo: "Sadie briga com um homem em Rhodes; Dutch e Arthur se envolvem, fortalecendo a presença da gangue na cidade." },
+    { titulo: "Missão 3.3 American Distillation", resumo: "Arthur e Dutch enfrentam os Lemoyne Raiders e descobrem um esquema de contrabando entre os Grays e os Braithwaites." },
+    { titulo: "Missão 3.4 An Honest Mistake", resumo: "Arthur, Bill e Charles são emboscados pelos Raiders durante um roubo." },
+    { titulo: "Missão 3.5 Preaching Forgiveness as He Went", resumo: "Arthur e John resgatam um prisioneiro em uma plantação, enfrentando os Raiders." },
+    { titulo: "Missão 3.6 Sodom? Back to Gomorrah", resumo: "A gangue assalta um banco em Valentine e enfrenta tiroteios na fuga, chamando atenção dos Pinkertons." },
+    { titulo: "Missão 3.7 Magicians for Sport", resumo: "Arthur e Charles resgatam Trelawny de caçadores de recompensa." },
+    { titulo: "Missão 3.8 Horse Flesh for Dinner", resumo: "Arthur, Javier e John roubam cavalos da família Braithwaite, explorando o conflito familiar." },
+    { titulo: "Missão 3.9 Advertising, the New American Art I & II", resumo: "Arthur e Sean sabotam uma entrega de bebidas para prejudicar os rivais dos Grays." },
+    { titulo: "Missão 3.10 The Course of True Love I, II & III", resumo: "Arthur ajuda os amantes Beau Gray e Penelope Braithwaite em sua relação proibida." },
+    { titulo: "Missão 3.11 A Short Walk in a Pretty Town", resumo: "Sean é morto em uma emboscada dos Grays; a gangue promete vingança." },
+    { titulo: "Missão 3.12 Blood Feuds, Ancient and Modern", resumo: "A gangue ataca os Braithwaites em retaliação, mas Jack Marston é sequestrado." },
+    { titulo: "Missão 3.13 The Battle of Shady Belle", resumo: "A gangue derrota os Raiders e toma Shady Belle como novo acampamento." },
+    { titulo: "Missão 3.14 Friends in Very Low Places", resumo: "Arthur ajuda Trelawny a vender moonshine para contrabandistas locais." },
+    { titulo: "Missão 3.15 Blessed are the Peacemakers", resumo: "Arthur tenta negociar paz entre Grays e Braithwaites, mas é traído pelos O'Driscolls e capturado." },
+    { titulo: "Missão 3.16 A Fork in the Road", resumo: "Arthur é diagnosticado com tuberculose, iniciando sua jornada de transformação pessoal." }
+  ]
+    },
+    4: {
+    imagem: "../assets/fundos/img4.webp",
+    titulo: "Saint Denis",
+    missoes: [
+    { titulo: "Missão 4.1 The Joys of Civilization", resumo: "Arthur chega a Saint Denis e começa a explorar a cidade, buscando pistas sobre Jack Marston, que está desaparecido após o sequestro." },
+    { titulo: "Missão 4.2 Angelo Bronte, a Man of Honor", resumo: "Arthur e Dutch conhecem o mafioso Angelo Bronte, que tem Jack com ele. A gangue realiza favores para Bronte em troca do resgate." },
+    { titulo: "Missão 4.3 No, No and Thrice, No", resumo: "Mary Linton reaparece e pede ajuda para resgatar seu pai enganado por investidores fraudulentos, mostrando o lado humano de Arthur." },
+    { titulo: "Missão 4.4 Help a Brother Out / Brothers and Sisters, One and All", resumo: "Arthur ajuda um monge a encontrar crianças desaparecidas nas favelas, revelando a decadência social de Saint Denis." },
+    { titulo: "Missão 4.5 Fatherhood and Other Dreams I & II", resumo: "Arthur e Mary passam tempo juntos, mas ele recusa fugir com ela, aceitando seu destino com a gangue." },
+    { titulo: "Missão 4.6 Urban Pleasures", resumo: "Dutch, Arthur e Lenny roubam um bonde em Saint Denis. A fuga é caótica e cheia de perseguição policial." },
+    { titulo: "Missão 4.7 A Fine Night of Debauchery", resumo: "Arthur, Dutch e Strauss se infiltram em um barco de apostas para roubar jogadores ricos, fugindo pelas águas da cidade." },
+    { titulo: "Missão 4.8 Horsemen, Apocalypses", resumo: "A gangue enfrenta agentes federais e planeja um golpe final para deixar a vida fora da lei para trás." },
+    { titulo: "Missão 4.9 American Fathers I & II", resumo: "Arthur se envolve na luta dos indígenas liderados por Rains Fall, pressionados pelo governo e empresas ferroviárias." },
+    { titulo: "Missão 4.10 Country Pursuits", resumo: "Arthur e Sadie perseguem o mafioso Bronte, preparando-se para um confronto direto." },
+    { titulo: "Missão 4.11 Revenge is a Dish Best Eaten", resumo: "A gangue invade e captura Bronte, que é morto brutalmente por Dutch, mostrando sua queda moral." },
+    { titulo: "Missão 4.12 Banking, the Old American Art", resumo: "Assalto ao banco em Saint Denis dá errado, com mortes, feridos e capturas. A gangue escapa com dificuldade." }
+  ]
+    },
+    5: {
+    imagem: "../assets/fundos/img5.jpg",
+    titulo: "Guarma",
+    missoes: [
+    { titulo: "Missão 5.1 Welcome to the New World", resumo: "Arthur acorda após naufrágio em Guarma e se junta a Dutch, Micah e sobreviventes. Descobrem a ilha dominada por uma plantação e regime opressor." },
+    { titulo: "Missão 5.2 Savage Old Laws", resumo: "A gangue encontra rebeldes liderados por Hercule e resgata Javier, enfrentando tiroteios e infiltrando-se nas instalações." },
+    { titulo: "Missão 5.3 A Kind and Benevolent Despot", resumo: "Arthur e Dutch ajudam os rebeldes, invadem uma prisão para resgatar líder revolucionário e descobrem abusos dos colonizadores." },
+    { titulo: "Missão 5.4 Hell Hath No Fury", resumo: "Para sair da ilha, a gangue ajuda rebeldes atacando o exército local, destruindo um navio para enfraquecer o domínio espanhol." },
+    { titulo: "Missão 5.5 Paradise Mercifully Departed", resumo: "Após o ataque, os rebeldes ajudam a gangue a escapar da ilha em confronto final no porto." },
+    { titulo: "Missão 5.6 Dear Uncle Tacitus", resumo: "A gangue retorna aos EUA e descobre que John está preso e que os Pinkertons continuam a persegui-los." }
+  ]
+    },
+    6: {
+    imagem: "../assets/fundos/img6.jpg",
+    titulo: "Beaver Hollow",
+    missoes: [
+    { titulo: "Missão 6.1 The Bridge to Nowhere", resumo: "Arthur e John sabotam uma ponte ferroviária, simbolizando a destruição iminente da gangue." },
+    { titulo: "Missão 6.2 Icarus and Friends", resumo: "Arthur acompanha Charles e Rains Fall para ajudar indígenas e usa um balão para localizar Eagle Flies." },
+    { titulo: "Missão 6.3 Visiting Hours", resumo: "Arthur e Sadie invadem a penitenciária de Sisika para resgatar John Marston." },
+    { titulo: "Missão 6.4 Just a Social Call", resumo: "Arthur confronta Dutch e Micah após descobrir suas traições." },
+    { titulo: "Missão 6.5 A Rage Unleashed", resumo: "Arthur e Eagle Flies sabotam um trem militar, intensificando o conflito com o governo." },
+    { titulo: "Missão 6.6 The Delights of Van Horn", resumo: "A gangue rouba um carregamento militar; Micah ganha influência sobre Dutch." },
+    { titulo: "Missão 6.7 Goodbye, Dear Friend", resumo: "Arthur e Sadie matam o agente Milton e descobrem que Micah é o traidor da gangue." },
+    { titulo: "Missão 6.8 Favored Sons", resumo: "Dutch manipula Eagle Flies para ataque suicida; Arthur salva o jovem, mas ele morre." },
+    { titulo: "Missão 6.9 The Fine Art of Conversation", resumo: "Arthur tenta mediar a paz entre indígenas e governo, sem sucesso." },
+    { titulo: "Missão 6.10 Mrs. Sadie Adler, Widow I & II", resumo: "Arthur ajuda Sadie a se vingar dos assassinos de seu marido." },
+    { titulo: "Missão 6.11 The King's Son", resumo: "Arthur e Charles resgatam Eagle Flies, que morre nos braços do pai." },
+    { titulo: "Missão 6.12 My Last Boy", resumo: "Arthur e Dutch lideram o último ataque da gangue; ocorre o rompimento definitivo entre eles." },
+    { titulo: "Missão 6.13 Our Best Selves", resumo: "Os leais planejam um assalto final a um trem para fugir." },
+    { titulo: "Missão 6.14 Red Dead Redemption (missão final de Arthur)", resumo: "Com a tuberculose avançada, Arthur enfrenta Micah no duelo final, com desfecho dependendo das escolhas do jogador. Se Arthur ajudou John e teve honra alta: ele morre em paz, vendo o nascer do sol, após ser ferido mortalmente por Micah; Se Arthur foi desonrado: Micah o executa cruelmente no alto da montanha." }
+  ]
+    },
+    7: {
+    imagem: "../assets/fundos/img7.jpg",
+    titulo: "Pronghorn Ranch",
+    missoes: [
+    { titulo: "Missão 7.1 Outlaws from the West", resumo: "John e Abigail tentam deixar a vida de fora da lei e John começa a trabalhar na fazenda." },
+    { titulo: "Missão 7.2 A New Jerusalem", resumo: "John ajuda fazendeiros locais e enfrenta pistoleiros que ameaçam a região." },
+    { titulo: "Missão 7.3 Far Away?", resumo: "John recebe notícias sobre membros restantes da gangue e planeja como enfrentá-los." },
+    { titulo: "Missão 7.4 The Wheel", resumo: "John trabalha na fazenda lidando com problemas pessoais e protegendo sua família." },
+    { titulo: "Missão 7.5 Fatherhood, Part II", resumo: "John reconstrói o relacionamento com Jack, tentando ser um pai melhor." },
+    { titulo: "Missão 7.6 Pronghorn Ranch", resumo: "John enfrenta problemas locais como fazendeiros rivais e criminosos." },
+    { titulo: "Missão 7.7 Old Friends", resumo: "John reencontra velhos aliados e junta forças contra os inimigos restantes." }
+  ]
+    },
+    2: {
+    imagem: "../assets/fundos/img8.webp",
+    titulo: "Beecher's Hope",
+    missoes: [
+    { titulo: "Missão 8.1 Home Improvement", resumo: "John compra uma fazenda para começar uma vida estável com Abigail e Jack." },
+    { titulo: "Missão 8.2 A New Future Imagined", resumo: "John tenta deixar a vida de fora da lei, mas os fantasmas do passado o perseguem." },
+    { titulo: "Missão 8.3 The Wheel", resumo: "John cuida da fazenda e enfrenta desafios como animais selvagens e ladrões de gado." },
+    { titulo: "Missão 8.4 Fatherhood, Part II", resumo: "John e Jack fortalecem seu vínculo para garantir um futuro melhor." },
+    { titulo: "Missão 8.5 American Venom", resumo: "John e aliados enfrentam Micah Bell e os Pinkertons." },
+    { titulo: "Missão 8.6 The Course of the Game", resumo: "John lidera ataque contra inimigos restantes buscando vingança e justiça." },
+    { titulo: "Missão 8.7 The Truth Comes Out", resumo: "Segredos são revelados durante o confronto final, e John toma decisões difíceis para proteger sua família." }
+  ]
+    }
+  };
+
+function mostrarCapitulo(numero) {
+  if (!capitulos[numero]) return;
+
+  capituloSelecionado = numero;
+
+  document.querySelector('.conteudo').style.backgroundImage = `url('${capitulos[numero].imagem}')`;
+  titulo.innerText = capitulos[numero].titulo;
+  titulo.style.opacity = 1;
+
+  var htmlMiss = "";
+  capitulos[numero].missoes.forEach(function(missao){
+    htmlMiss += `<h2>${missao.titulo}</h2><p>${missao.resumo}</p>`;
+  });
+
+  conteudoHistoria.innerHTML = htmlMiss;
+  conteudoHistoria.style.display = "block"; // exibe a div quando clicado
+  conteudoSalvo = htmlMiss;
+}
+
+function mudarFundo(imagem, tituloTexto) {
+  document.querySelector('.conteudo').style.backgroundImage = `url('${imagem}')`;
+  titulo.innerText = tituloTexto;
+  titulo.style.opacity = 1;
+
+  if (capituloSelecionado !== 0) {
+    conteudoHistoria.style.display = "none"; // esconde temporariamente
+  }
+}
+
+function restaurarFundo() {
+  if (capituloSelecionado !== 0) {
+    var cap = capitulos[capituloSelecionado];
+    document.querySelector('.conteudo').style.backgroundImage = `url('${cap.imagem}')`;
+    titulo.innerText = cap.titulo;
+    titulo.style.opacity = 1;
+    conteudoHistoria.innerHTML = conteudoSalvo;
+    conteudoHistoria.style.display = "block"; // mostra novamente
+  } else {
+    document.querySelector('.conteudo').style.backgroundImage = `url('${imagemPadrao}')`;
+    titulo.style.opacity = 0;
+    conteudoHistoria.innerHTML = "";
+    conteudoHistoria.style.display = "none"; // esconde se nenhum capítulo foi clicado
+  }
+  }
+
+  function toggleLido(capitulo) {
+  var btn = document.getElementById('btnLido' + capitulo);
+  var chave = 'capituloLido' + capitulo;
+  var marcado = localStorage.getItem(chave);
+
+  if (marcado === "true") {
+    localStorage.setItem(chave, "false");
+    btn.textContent = "Lido";
+    btn.style.backgroundColor = "";
+  } else {
+    localStorage.setItem(chave, "true");
+    btn.textContent = "Lido ✓";
+    btn.style.backgroundColor = "lightgreen";
+  }
+}
+
+// Ao carregar a página, atualiza os botões com o estado salvo:
+window.onload = function() {
+  for (var i = 1; i <= 8; i++) {
+    var btn = document.getElementById('btnLido' + i);
+    var marcado = localStorage.getItem('capituloLido' + i);
+    if (marcado === "true") {
+      btn.textContent = "Lido ✓";
+      btn.style.backgroundColor = "lightgreen";
+    }
+  }
+};
+</script>

@@ -20,19 +20,97 @@
             <br>
             <div class="navbar">
                 <h1>Olá, <span id="b_usuario"></span></h1>
-                <div class="btn-nav"><a href="./historia.html"><h3>História</h3></a></div>
-                <div class="btn-nav"><a href="./quiz.html"><h3>Quiz</h3></a></div>
-                <div class="btn-nav"><a href="./dashboard.html"><h3>Painel</h3></a></div>
-                <div class="btn-nav"><a href="./Mudar_perfil.html"><h3>Mudar perfil</h3></a></div>
-                <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
+                <div class="btn-nav"><a href="./historia.html">
+                        <h3>História</h3>
+                    </a></div>
+                <div class="btn-nav"><a href="./quiz.html">
+                        <h3>Quiz</h3>
+                    </a></div>
+                <div class="btn-nav"><a href="./dashboard.html">
+                        <h3>Painel</h3>
+                    </a></div>
+                <div class="btn-nav"><a href="./Mudar_perfil.html">
+                        <h3>Mudar perfil</h3>
+                    </a></div>
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
             </div>
         </div>
-        <div class="conteudo"></div>
-    </div>
+        <div class="conteudo">
+            <div class="form-container">
+                <label>Nome
+                <input type="text" placeholder="Digite seu novo apelido" id="nome_input"></label>
+                <label>Email
+                <input type="email" placeholder="Digite seu novo email" id="email_input"></label>
+                <label>Senha
+                <input type="password" placeholder="Digite sua nova senha" id="senha_input"></label>
+                <button onclick="atualizarPerfil()">Salvar Alterações</button>
+                <div id="mensagem_erro" class="mensagem-erro" style="display: none;"></div>
+            </div>
+        </div>
 </body>
+
 </html>
 <script>
-    function voltar(){
-     window.location = "Seu_perfil.html";   
+    function voltar() {
+        window.location = "Seu_perfil.html";
     }
+
+    function atualizarPerfil() {
+    var idVar = sessionStorage.getItem('ID_USUARIO');
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" 
+    ) {
+        
+      mensagem_erro.style.display = 'flex';
+      mensagem_erro.innerHTML ="Por favor preencha todos os campos";
+
+    } else if (!emailVar.includes('@')){
+
+      mensagem_erro.style.display = 'flex';
+      mensagem_erro.innerHTML ="O email precisa ter @"
+
+    } else {
+      fetch(`/usuarios/atualizarDados/${idVar}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (!resposta.ok) {
+          mensagem_erro.innerHTML =
+          "Houve um erro ao tentar realizar as alterações!";
+        } 
+        return resposta.json();
+      })
+      .then(json => {
+                sessionStorage.setItem('EMAIL_USUARIO', `${emailVar}`);
+                sessionStorage.setItem('NOME_USUARIO', `${nomeVar}`);
+
+                mensagem_erro.innerHTML =
+                "Alteração feita com sucesso!";
+                setTimeout(() => {
+                    window.location = "Seu_perfil.html";
+                }, 2000)
+            })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${erro}`);
+      });
+    }
+  }    
 </script>

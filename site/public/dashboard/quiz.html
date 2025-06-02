@@ -1,289 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo - Quiz</title>
-    <link rel="stylesheet" href="../css/quiz.css">
+  <meta charset="UTF-8">
+  <title>Quiz Interativo</title>
+  <link rel="stylesheet" href="../css/quiz.css">
+  <link rel="icon" href="../assets/icon/icon01.webp">
 </head>
-
-
-<body onload="onloadEsconder()">
-    <div id="pontuacaoEJogo">
-        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-
-        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
-            </div>
-            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                    <span id="spanPontuacaoFinal">***</span>
-                </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
-            </div>
-        </div>
-
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-            <div id="infoQuestao" class="padding-8">
-                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                    questões.</span>
-            </div>
-
-            <div id="perguntaDaQuestaoAtual" class="padding-8">
-                <span id="spanQuestaoExibida" class="text-bold"></span>
-            </div>
-
-            <div id="infoAlternativas" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoes" class="flex-colunar padding-8">
-                <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                </span>
-                <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                </span>
-                <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                </span>
-                <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                </span>
-            </div>
-
-            <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-            </div>
-
-        </div>
+<body>
+  <div class="pagina">
+    <!-- Navbar lateral -->
+    <div class="janela">
+      <div class="Titulo"></div>
+      <br>
+      <div class="navbar">
+        <h1>Olá, <span id="b_usuario"></span></h1>
+        <div class="btn-nav"><a href="./historia.html"><h3>História</h3></a></div>
+        <div class="btn-nav"><a href="./quiz.html"><h3>Quiz</h3></a></div>
+        <div class="btn-nav"><a href="./dashboard.html"><h3>Painel</h3></a></div>
+        <div class="btn-nav"><a href="./Mudar_perfil.html"><h3>Mudar perfil</h3></a></div>
+        <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
+      </div>
     </div>
-</body>
 
+    <div class="conteudo">
+      <div class="quiz-escolha">
+        <button onclick="escolherQuiz(1)">Quiz 1 - Nível Fácil</button>
+        <button onclick="escolherQuiz(2)">Quiz 2 - Nível Médio</button>
+        <button onclick="escolherQuiz(3)">Quiz 3 - Nível Difícil</button>
+      </div>
+    
+
+    <!-- Coloque aqui dentro da .pagina -->
+    <div id="pontuacaoEJogo">
+      <div class="placar">
+        Pontuação: <span id="placar">0</span>
+      </div>
+      <div class="questoes">
+        <div class="questao" id="pergunta">Pergunta aqui</div>
+        <div class="alternativas">
+          <button id="A" onclick="verificarResposta('A')">A</button>
+          <button id="B" onclick="verificarResposta('B')">B</button>
+          <button id="C" onclick="verificarResposta('C')">C</button>
+          <button id="D" onclick="verificarResposta('D')">D</button>
+        </div>
+        <button id="btnProxima" style="display:none;" onclick="proximaPergunta()">Próxima Pergunta</button>
+      </div>
+    </div>
+  </div>
+  </div>
 </html>
-<script>
-    const listaDeQuestoes = [
 
-        {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
-            alternativaCorreta: "alternativaC"
-        },
+    <script>
+        const quizzes = {
+            1: [
+                {
+                    pergunta: "Qual é o nome do protagonista principal de Red Dead Redemption 2?",
+                    A: "John Marston",
+                    B: "Arthur Morgan",
+                    C: "Dutch van der Linde",
+                    D: "Javier Escuella",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Em que ano se passa a história principal do jogo?",
+                    A: "1889",
+                    B: "1899",
+                    C: "1909",
+                    D: "1919",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual é o nome do grupo ao qual Arthur pertence?",
+                    A: "Os Fora da Lei de Lemoyne",
+                    B: "A Gangue de Marston",
+                    C: "A Gangue de Dutch van der Linde",
+                    D: "A Irmandade da Liberdade",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Qual é o animal que Arthur pode domar e usar como transporte?",
+                    A: "Touro",
+                    B: "Cavalo",
+                    C: "Camelo",
+                    D: "Urso",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Como se chama o melhor amigo de Arthur?",
+                    A: "Bill Williamson",
+                    B: "John Marston",
+                    C: "Charles Smith",
+                    D: "Hosea Matthews",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual dessas cidades NÃO aparece no mapa de RDR2?",
+                    A: "Valentine",
+                    B: "Saint Denis",
+                    C: "Blackwater",
+                    D: "Los Santos",
+                    correta: "D"
+                },
+                {
+                    pergunta: "Quem é o líder da gangue?",
+                    A: "Micah Bell",
+                    B: "Arthur Morgan",
+                    C: "Dutch van der Linde",
+                    D: "Sadie Adler",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Qual empresa desenvolveu o jogo?",
+                    A: "Ubisoft",
+                    B: "Rockstar Games",
+                    C: "Naughty Dog",
+                    D: "CD Projekt Red",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual é o nome da esposa de John Marston?",
+                    A: "Susan",
+                    B: "Abigail",
+                    C: "Karen",
+                    D: "Mary",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual é o nome do jornal que circula pelas cidades do jogo?",
+                    A: "Lemoyne Times",
+                    B: "Blackwater Post",
+                    C: "New Hanover Gazette",
+                    D: "Saint Denis Times",
+                    correta: "A"
+                }
+            ],
+            2: [
+                {
+                    pergunta: "Qual a capital do Brasil?",
+                    A: "São Paulo",
+                    B: "Brasília",
+                    C: "Rio de Janeiro",
+                    D: "Salvador",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Quem descobriu o Brasil?",
+                    A: "Dom Pedro",
+                    B: "Cristóvão Colombo",
+                    C: "Pedro Álvares Cabral",
+                    D: "Américo Vespúcio",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Qual planeta é o Planeta Vermelho?",
+                    A: "Vênus",
+                    B: "Marte",
+                    C: "Saturno",
+                    D: "Terra",
+                    correta: "B"
+                }
+            ],
+            3: [
+                {
+                    pergunta: "Qual linguagem estrutura páginas web?",
+                    A: "JavaScript",
+                    B: "CSS",
+                    C: "HTML",
+                    D: "Python",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Qual tag HTML mostra imagens?",
+                    A: "<img>",
+                    B: "<image>",
+                    C: "<pic>",
+                    D: "<src>",
+                    correta: "A"
+                },
+                {
+                    pergunta: "CSS serve para...",
+                    A: "Estilizar páginas",
+                    B: "Fazer cálculos",
+                    C: "Armazenar dados",
+                    D: "Executar lógica",
+                    correta: "A"
+                }
+            ]
+        };
 
-        {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
-            alternativaCorreta: "alternativaD"
-        },
+        let questoes = [];
+        let indiceAtual = 0;
+        let pontos = 0;
 
-        {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
-            alternativaCorreta: "alternativaD"
+        function mostrarMenu() {
+            document.getElementById('pontuacaoEJogo').style.display = 'none';
         }
 
-    ]
+        function escolherQuiz(numero) {
+            questoes = quizzes[numero];
+            indiceAtual = 0;
+            pontos = 0;
+            document.getElementById("placar").innerText = pontos;
+            document.getElementById('pontuacaoEJogo').style.display = 'flex';
+            mostrarQuestao();
+        }
 
-    // variáveis globais    
-    let numeroDaQuestaoAtual = 0
-    let pontuacaoFinal = 0
-    let tentativaIncorreta = 0
-    let certas = 0
-    let erradas = 0
-    let quantidadeDeQuestoes = listaDeQuestoes.length
-    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
-
-    function onloadEsconder() {
-        document.getElementById('pontuacao').style.display = "none"
-        document.getElementById('jogo').style.display = "none"
-    }
-
-    function iniciarQuiz() {
-        document.getElementById('pontuacao').style.display = "flex"
-        document.getElementById('jogo').style.display = "flex"
-        document.getElementById('btnIniciarQuiz').style.display = "none"
-
-        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
-
-        preencherHTMLcomQuestaoAtual(0)
-
-        btnSubmeter.disabled = false
-        btnProx.disabled = true
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = true
-    }
-
-    function preencherHTMLcomQuestaoAtual(index) {
-        habilitarAlternativas(true)
-        const questaoAtual = listaDeQuestoes[index]
-        numeroDaQuestaoAtual = index
-        console.log("questaoAtual")
-        console.log(questaoAtual)
-        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
-        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
-        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
-        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
-        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
-        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
-    }
-
-    function submeter() {
-        const options = document.getElementsByName("option"); // recupera alternativas no html
-
-        let hasChecked = false
-        for (let i = 0; i < options.length; i++) {
-            if (options[i].checked) {
-                hasChecked = true
-                break
+        function mostrarQuestao() {
+            if (indiceAtual >= questoes.length) {
+                alert("Quiz finalizado! Pontuação: " + pontos);
+                window.location.reload();
+                return;
             }
+
+            let q = questoes[indiceAtual];
+            document.getElementById("pergunta").innerText = q.pergunta;
+            document.getElementById("A").innerText = q.A;
+            document.getElementById("B").innerText = q.B;
+            document.getElementById("C").innerText = q.C;
+            document.getElementById("D").innerText = q.D;
+
+            ["A", "B", "C", "D"].forEach(letra => {
+                let btn = document.getElementById(letra);
+                btn.className = '';
+                btn.disabled = false;
+            });
         }
 
-        if (!hasChecked) {
-            alert("Não há alternativas escolhidas. Escolha uma opção.")
-        } else {
-            btnSubmeter.disabled = true
-            btnProx.disabled = false
+        function verificarResposta(letra) {
+  let q = questoes[indiceAtual];
+  let botao = document.getElementById(letra);
 
-            habilitarAlternativas(false)
+  if (letra === q.correta) {
+    botao.className = "acertou";
+    pontos++;
+    document.getElementById("placar").innerText = pontos;
+  } else {
+    botao.className = "errou";
+    document.getElementById(q.correta).className = "acertou";
+  }
 
-            checarResposta()
-        }
-    }
+  ["A", "B", "C", "D"].forEach(btn => document.getElementById(btn).disabled = true);
 
-    function habilitarAlternativas(trueOrFalse) {
-        let opcaoEscolhida = trueOrFalse ? false : true
+  // Mostrar botão de próxima ou finalizar
+  const btnProxima = document.getElementById("btnProxima");
+  btnProxima.style.display = "block";
 
-        primeiraOpcao.disabled = opcaoEscolhida
-        segundaOpcao.disabled = opcaoEscolhida
-        terceiraOpcao.disabled = opcaoEscolhida
-        quartaOpcao.disabled = opcaoEscolhida
+  if (indiceAtual === questoes.length - 1) {
+    btnProxima.innerText = "Finalizar Quiz";
+    btnProxima.onclick = finalizarQuiz;
+  } else {
+    btnProxima.innerText = "Próxima Pergunta";
+    btnProxima.onclick = proximaPergunta;
+  }
+}
 
-    }
+function proximaPergunta() {
+  indiceAtual++;
+  mostrarQuestao();
+}
 
-    function avancar() {
-        btnProx.disabled = true
-        btnSubmeter.disabled = false
+function finalizarQuiz() {
+  alert("Quiz finalizado! Pontuação: " + pontos);
+  window.location.reload();
+}
+    </script>
 
-        desmarcarRadioButtons()
-
-        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-            alert("Atenção... a próxima é a ultima questão!")
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else {
-            finalizarJogo()
-        }
-        limparCoresBackgroundOpcoes()
-    }
-
-    function tentarNovamente() {
-        // atualiza a página
-        window.location.reload()
-    }
-
-    function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
-
-        const options = document.getElementsByName("option"); // recupera alternativas no html
-
-        let alternativaCorreta = null // variável para armazenar a alternativa correta
-
-        options.forEach((option) => {
-            if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
-                alternativaCorreta = option.labels[0].id
-            }
-        })
-
-        // verifica se resposta assinalada é correta
-        options.forEach((option) => {
-            if (option.checked === true && option.value === respostaQuestaoAtual) {
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                pontuacaoFinal++
-                certas++
-                document.getElementById("spanCertas").innerHTML = certas
-                numeroDaQuestaoAtual++
-            } else if (option.checked && option.value !== respostaQuestaoAtual) {
-                const wrongLabelId = option.labels[0].id
-
-                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                tentativaIncorreta++
-                erradas++
-                document.getElementById("spanErradas").innerHTML = erradas
-                numeroDaQuestaoAtual++
-            }
-        })
-    }
-
-    function limparCoresBackgroundOpcoes() {
-        const options = document.getElementsByName("option");
-        options.forEach((option) => {
-            document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
-            document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
-        })
-    }
-
-    function desmarcarRadioButtons() {
-        const options = document.getElementsByName("option");
-        for (let i = 0; i < options.length; i++) {
-            options[i].checked = false;
-        }
-    }
-
-    function finalizarJogo() {
-        let textoParaMensagemFinal = null
-        let classComCoresParaMensagemFinal = null
-        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
-        if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Parece que você não estudou..."
-            classComCoresParaMensagemFinal = "text-danger-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
-            classComCoresParaMensagemFinal = "text-warning-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, parabéns!"
-            classComCoresParaMensagemFinal = "text-success-with-bg"
-        }
-
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
-
-
-        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
-        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-
-        document.getElementById('jogo').classList.add("text-new-gray") 
-
-        btnProx.disabled = true
-        btnSubmeter.disabled = true
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = false
-
-    }
-</script>
+</body>
+</html>

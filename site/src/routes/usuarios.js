@@ -16,4 +16,6 @@ router.put("/atualizarDados/:id", function (req, res) {
     usuarioController.atualizarDados(req, res);
 });
 
+
+
 module.exports = router;

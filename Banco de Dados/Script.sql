@@ -25,15 +25,21 @@ fkIdUsuarioQuiz int,
 constraint pkcomposta primary key (idTentativas, fkIdQuiz, fkIdUsuarioQuiz),
 dtTentativa timestamp default current_timestamp,
 pontuação int,
-jogado TINYINT);
+jogado TINYINT,
+foreign key (fkIdUsuarioQuiz) references usuario(idUsuario),
+foreign key (fkIdQuiz) references quiz(idQuiz)
+);
  
 create table visualizacao (
-idVizualizacao int,
+idVizualizacao int auto_increment,
 fkIdCapitulos int,
 fkIdUsuario int,
 constraint pkcomposta primary key (idVizualizacao, fkIdCapitulos, fkIdUsuario),
 dtVisualizacao timestamp default current_timestamp,
-visto TINYINT);
+visto TINYINT,
+foreign key (fkIdCapitulos) references capitulos(idCapitulos),
+foreign key (fkIdUsuario) references usuario(idUsuario)
+);
 
 insert into capitulos (nome , descricao) values 
 ('Prólogo', 'A gangue de Dutch foge para as montanhas após um assalto fracassado, enfrentando frio e escassez.'),
@@ -50,3 +56,7 @@ insert into quiz (nome , nivel) values
 ('O Início da Trilha', 'Fácil'),
 ('Procurado Vivo ou Morto', 'Médio'),
 ('A Última Cavalgada', 'Difícil');
+
+select * from visualizacao;
+
+show tables;

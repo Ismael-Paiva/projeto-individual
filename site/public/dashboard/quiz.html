@@ -5,15 +5,15 @@
   <title>Quiz Interativo</title>
   <link rel="stylesheet" href="../css/quiz.css">
   <link rel="icon" href="../assets/icon/icon01.webp">
+  <script src="../js/sessao.js"></script>
 </head>
-<body>
+<body onload="validarSessao()">
   <div class="pagina">
-    <!-- Navbar lateral -->
     <div class="janela">
       <div class="Titulo"></div>
       <br>
       <div class="navbar">
-        <h1>Olá, <span id="b_usuario"></span></h1>
+        <h1><span id="b_usuario"></span></h1>
         <div class="btn-nav"><a href="./historia.html"><h3>História</h3></a></div>
         <div class="btn-nav"><a href="./quiz.html"><h3>Quiz</h3></a></div>
         <div class="btn-nav"><a href="./dashboard.html"><h3>Painel</h3></a></div>
@@ -51,8 +51,9 @@
 </html>
 
     <script>
-        const quizzes = {
-            1: [
+      
+        const quizzes = [
+            [            
                 {
                     pergunta: "Qual é o nome do protagonista principal de Red Dead Redemption 2?",
                     A: "John Marston",
@@ -134,63 +135,175 @@
                     correta: "A"
                 }
             ],
-            2: [
+             [
                 {
-                    pergunta: "Qual a capital do Brasil?",
-                    A: "São Paulo",
-                    B: "Brasília",
-                    C: "Rio de Janeiro",
-                    D: "Salvador",
+                    pergunta: "Qual é a doença que Arthur Morgan contrai durante a história?",
+                    A: "Gripe espanhola",
+                    B: "Tuberculose",
+                    C: "Pneumonia",
+                    D: "Varíola",
                     correta: "B"
                 },
                 {
-                    pergunta: "Quem descobriu o Brasil?",
-                    A: "Dom Pedro",
-                    B: "Cristóvão Colombo",
-                    C: "Pedro Álvares Cabral",
-                    D: "Américo Vespúcio",
+                    pergunta: "Quem é responsável por transmitir a doença a Arthur?",
+                    A: "Um prisioneiro",
+                    B: "Thomas Downes",
+                    C: "Micah Bell",
+                    D: "Um médico",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual é o nome da cidade inspirada em Nova Orleans?",
+                    A: "Rhodes",
+                    B: "Saint Denis",
+                    C: "Annesburg",
+                    D: "Strawberry",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual personagem é um ex-escravo e um dos mais leais da gangue?",
+                    A: "Lenny Summers",
+                    B: "Javier Escuella",
+                    C: "Charles Smith",
+                    D: "Hosea Matthews",
                     correta: "C"
                 },
                 {
-                    pergunta: "Qual planeta é o Planeta Vermelho?",
-                    A: "Vênus",
-                    B: "Marte",
-                    C: "Saturno",
-                    D: "Terra",
+                    pergunta: "Onde Arthur esconde seu dinheiro, caso o jogador não o use antes do fim?",
+                    A: "Na carroça de Strauss",
+                    B: "Embaixo do travesseiro",
+                    C: "Na caverna do acampamento",
+                    D: "Embaixo de uma rocha no acampamento",
+                    correta: "D"
+                },
+                {
+                    pergunta: "Qual é o nome do rifle de repetição mais popular no jogo?",
+                    A: "Springfield",
+                    B: "Lancaster",
+                    C: "Evans",
+                    D: "Carcano",
                     correta: "B"
+                },
+                {
+                    pergunta: "Qual é o nome do ferreiro que vende armas em Valentine?",
+                    A: "Joe",
+                    B: "Horley",
+                    C: "Clive",
+                    D: "Ele não tem nome",
+                    correta: "D"
+                },
+                {
+                    pergunta: "Quem trai a gangue e se alia aos Pinkertons?",
+                    A: "Sadie",
+                    B: "Dutch",
+                    C: "Micah",
+                    D: "Bill",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Qual é o nome do local onde a gangue se esconde após o roubo fracassado em Saint Denis?",
+                    A: "Guarma",
+                    B: "Bluewater Marsh",
+                    C: "Tall Trees",
+                    D: "Van Horn",
+                    correta: "A"
+                },
+                {
+                    pergunta: "O que acontece com John Marston no epílogo?",
+                    A: "Ele morre",
+                    B: "Ele vira bandido",
+                    C: "Ele se aposenta",
+                    D: "Ele compra uma fazenda",
+                    correta: "D"
                 }
             ],
-            3: [
+             [
                 {
-                    pergunta: "Qual linguagem estrutura páginas web?",
-                    A: "JavaScript",
-                    B: "CSS",
-                    C: "HTML",
-                    D: "Python",
+                    pergunta: "Qual é o nome compvaro do personagem Sadie?",
+                    A: "Sadie Burns",
+                    B: "Sadie Adler",
+                    C: "Sadie Morgan",
+                    D: "Sadie O'Shea",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual é o nome do trem que a gangue assalta no início do jogo?",
+                    A: "Lemoyne Express",
+                    B: "Cornwall No. 452",
+                    C: "Blackwater Limited",
+                    D: "Saint Denis Line",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Em Guarma, com quem Arthur se alia para sobreviver?",
+                    A: "Um grupo de revolucionários",
+                    B: "Um mercador local",
+                    C: "Um capitão espanhol",
+                    D: "Um velho pescador",
+                    correta: "A"
+                },
+                {
+                    pergunta: "Qual é o nome da propriedade dos Braithwaite?",
+                    A: "Caliga Hall",
+                    B: "Shady Belle",
+                    C: "Braithwaite Manor",
+                    D: "Braithwaite Estate",
                     correta: "C"
                 },
                 {
-                    pergunta: "Qual tag HTML mostra imagens?",
-                    A: "<img>",
-                    B: "<image>",
-                    C: "<pic>",
-                    D: "<src>",
+                    pergunta: "Como se chama o reverendo alcoólatra da gangue?",
+                    A: "Reverend Hill",
+                    B: "Reverend Swanson",
+                    C: "Reverend O'Connell",
+                    D: "Reverend Ford",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual música toca durante a cavalgada emocional após Arthur descobrir sua doença?",
+                    A: "That's the Way It Is",
+                    B: "May I Stand Unshaken",
+                    C: "Unshaken",
+                    D: "Cruel World",
                     correta: "A"
                 },
                 {
-                    pergunta: "CSS serve para...",
-                    A: "Estilizar páginas",
-                    B: "Fazer cálculos",
-                    C: "Armazenar dados",
-                    D: "Executar lógica",
-                    correta: "A"
-                }
-            ]
-        };
+                    pergunta: "Qual desses personagens NÃO aparece em Guarma?",
+                    A: "Dutch",
+                    B: "Bill",
+                    C: "Sadie",
+                    D: "Javier",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Quantos capítulos principais (antes do epílogo) o jogo possui?",
+                    A: "5",
+                    B: "6",
+                    C: "7",
+                    D: "8",
+                    correta: "B"
+                },
+                {
+                    pergunta: "Qual desses eventos Arthur pode vivenciar de forma diferente, dependendo do seu nível de honra?",
+                    A: "A doença",
+                    B: "O roubo do trem",
+                    C: "A missão final",
+                    D: "O encontro com John",
+                    correta: "C"
+                },
+                {
+                    pergunta: "Quem mata Micah Bell?",
+                    A: "Arthur",
+                    B: "Sadie",
+                    C: "Dutch",
+                    D: "John",
+                    correta: "D"
+                },
+            ]]
+            ;
 
-        let questoes = [];
-        let indiceAtual = 0;
-        let pontos = 0;
+        var questoes = [];
+        var indiceAtual = 0;
+        var pontos = 0;
 
         function mostrarMenu() {
             document.getElementById('pontuacaoEJogo').style.display = 'none';
@@ -212,25 +325,25 @@
                 return;
             }
 
-            let q = questoes[indiceAtual];
+            var q = questoes[indiceAtual];
             document.getElementById("pergunta").innerText = q.pergunta;
             document.getElementById("A").innerText = q.A;
             document.getElementById("B").innerText = q.B;
             document.getElementById("C").innerText = q.C;
             document.getElementById("D").innerText = q.D;
 
-            ["A", "B", "C", "D"].forEach(letra => {
-                let btn = document.getElementById(letra);
+            ["A", "B", "C", "D"].forEach(varra => {
+                var btn = document.getElementById(varra);
                 btn.className = '';
                 btn.disabled = false;
             });
         }
 
-        function verificarResposta(letra) {
-  let q = questoes[indiceAtual];
-  let botao = document.getElementById(letra);
+        function verificarResposta(varra) {
+  var q = questoes[indiceAtual];
+  var botao = document.getElementById(varra);
 
-  if (letra === q.correta) {
+  if (varra === q.correta) {
     botao.className = "acertou";
     pontos++;
     document.getElementById("placar").innerText = pontos;
@@ -263,7 +376,6 @@ function finalizarQuiz() {
   alert("Quiz finalizado! Pontuação: " + pontos);
   window.location.reload();
 }
-    </script>
-
+</script>
 </body>
 </html>

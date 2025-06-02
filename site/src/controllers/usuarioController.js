@@ -79,7 +79,7 @@ function atualizarDados(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
 
-    usuarioModel.atualizarDados(idUsuario, nome, email,)
+    usuarioModel.atualizarDados(idUsuario, nome, email)
         .then(
             function (resultado) {
                 res.json(resultado);

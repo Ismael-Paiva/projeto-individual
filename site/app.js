@@ -29,6 +29,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/quiz", quizRouter);
+app.use("/lido", lidoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

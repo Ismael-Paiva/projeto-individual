@@ -82,7 +82,10 @@
       confirmacaoSenhaVar == "" 
     ) {
       mensagem_erro.innerHTML ="Por favor preencha todos os campos";
-    } else {
+    } else if (senha.length() < 8){
+      mensagem_erro.innerHTML ="Sua Senha deve conter 8 ou mais caracteres"
+    }
+    else {
       fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {

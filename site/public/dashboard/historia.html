@@ -10,7 +10,7 @@
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
 </head>
-<body onload="validarSessao()">
+<body >
     <div class="pagina">
                 <div class="janela">
             <div class="Titulo" onclick="voltar()"></div>
@@ -44,35 +44,35 @@
     <div class="botoes-fundo">
         <div class="capitulo-container">
             <button onclick="mostrarCapitulo(1)" onmouseover="mudarFundo('../assets/fundos/img1.webp', 'Colter')" onmouseout="restaurarFundo()">Capítulo 1</button>
-            <button class="botoes-baixo" id="btnLido1" onclick="toggleLido(1)">Lido</button>
+            <button class="botoes-baixo" id="btnLido1" onclick="Lido(1)">Lido</button>
         </div>
         <div class="capitulo-container">
             <button onclick="mostrarCapitulo(2)" onmouseover="mudarFundo('../assets/fundos/img2.webp', 'Horseshoe Overlook')" onmouseout="restaurarFundo()">Capítulo 2</button>
-            <button class="botoes-baixo" id="btnLido2" onclick="toggleLido(2)">Lido</button>
+            <button class="botoes-baixo" id="btnLido2" onclick="Lido(2)">Lido</button>
         </div>
         <div class="capitulo-container">    
             <button onclick="mostrarCapitulo(3)" onmouseover="mudarFundo('../assets/fundos/img3.webp', 'Clemens Point')" onmouseout="restaurarFundo()">Capítulo 3</button>
-            <button class="botoes-baixo" id="btnLido3" onclick="toggleLido(3)">Lido</button>
+            <button class="botoes-baixo" id="btnLido3" onclick="Lido(3)">Lido</button>
         </div>
         <div class="capitulo-container">    
             <button onclick="mostrarCapitulo(4)" onmouseover="mudarFundo('../assets/fundos/img4.webp', 'Saint Denis')" onmouseout="restaurarFundo()">Capítulo 4</button>
-            <button class="botoes-baixo" id="btnLido4" onclick="toggleLido(4)">Lido</button>
+            <button class="botoes-baixo" id="btnLido4" onclick="Lido(4)">Lido</button>
         </div>
         <div class="capitulo-container">
             <button onclick="mostrarCapitulo(5)" onmouseover="mudarFundo('../assets/fundos/img5.jpg', 'Guarma')" onmouseout="restaurarFundo()">Capítulo 5</button>
-            <button class="botoes-baixo" id="btnLido5" onclick="toggleLido(5)">Lido</button>
+            <button class="botoes-baixo" id="btnLido5" onclick="Lido(5)">Lido</button>
         </div>
         <div class="capitulo-container">
             <button onclick="mostrarCapitulo(6)" onmouseover="mudarFundo('../assets/fundos/img6.jpg', 'Beaver Hollow')" onmouseout="restaurarFundo()">Capítulo 6</button>
-            <button class="botoes-baixo" id="btnLido6" onclick="toggleLido(6)">Lido</button>
+            <button class="botoes-baixo" id="btnLido6" onclick="Lido(6)">Lido</button>
         </div>
         <div class="capitulo-container">
             <button onclick="mostrarCapitulo(7)" onmouseover="mudarFundo('../assets/fundos/img7.jpg', 'Pronghorn Ranch')" onmouseout="restaurarFundo()">Epílogo Parte 1</button>
-            <button class="botoes-baixo" id="btnLido7" onclick="toggleLido(7)">Lido</button>
+            <button class="botoes-baixo" id="btnLido7" onclick="Lido(7)">Lido</button>
         </div>
         <div class="capitulo-container">
             <button onclick="mostrarCapitulo(8)" onmouseover="mudarFundo('../assets/fundos/img8.webp', `Beecher's Hope`)" onmouseout="restaurarFundo()">Epílogo Parte 2</button>
-            <button class="botoes-baixo" id="btnLido8" onclick="toggleLido(8)">Lido</button>
+            <button class="botoes-baixo" id="btnLido8" onclick="Lido(8)">Lido</button>
         </div>
 </div>
 
@@ -281,7 +281,34 @@ function restaurarFundo() {
   }
   }
 
-  function toggleLido(capitulo) {
+  function Lido(numero) {
+    var botao = document.getElementById('btnLido' + numero);
+    botao.style.backgroundColor = "green";
+     fetch(`/lido/visualizado/${idVar}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fkServer: numero
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
 
-}
+        if (resposta.ok) {
+          mensagem_erro.innerHTML =
+          "Informações guardada com sucesso";
+          setTimeout(() => {
+          window.location.reload();
+          }, "2000");
+        } else {
+          throw "Houve um erro ao inserir as informações";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+    }
+
 </script>

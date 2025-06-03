@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Georgia', serif;
-  background: url('../assets/bg_rdr2.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #f0e6d2;
   overflow: hidden;
@@ -37,7 +36,6 @@ body {
   text-shadow: 1px 1px 4px #000;
 }
 
-/* Botões do menu */
 .btn-nav, .btn-logout {
   width: 100px;
   margin: 20px 0;

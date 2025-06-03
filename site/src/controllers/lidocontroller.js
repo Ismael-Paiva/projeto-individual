@@ -12,7 +12,7 @@ function visualizado(req, res) {
     } else if (fk == undefined) {
         res.status(400).send("Sua visualização está Indefinido!");
     } else {
-        quizModel.cadastrar(idUsuario, pontuacao, fk)
+        quizModel.cadastrar(idUsuario, fk)
             .then(
                 function (resultado) {
                     res.json(resultado);

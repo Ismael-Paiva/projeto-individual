@@ -10,7 +10,7 @@
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
 </head>
-<body >
+<body onload="validarSessao()">
     <div class="pagina">
                 <div class="janela">
             <div class="Titulo" onclick="voltar()"></div>
@@ -84,6 +84,7 @@
   var conteudoHistoria = document.getElementById("historiaCapitulo");
   var capituloSelecionado = 0;
   var conteudoSalvo = ""; 
+  var idVar = sessionStorage.getItem('ID_USUARIO');
 
   var capitulos = {
     1: {

@@ -9,21 +9,58 @@
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="icon" href="../assets/icon/icon01.webp">
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
+    <script src="../js/painel.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body><!-- onload="validarSessao()" -->
     <div class="pagina">
         <div class="janela">
             <div class="Titulo"></div>
             <br>
             <div class="navbar">
                 <h1><br><span id="b_usuario"></span></h1>
-                <div class="btn-nav"><a href="./historia.html"><h3>História</h3></a></div>
-                <div class="btn-nav"><a href="./quiz.html"><h3>Quiz</h3></a></div>
-                <div class="btn-nav"><a href="./dashboard.html"><h3>Painel</h3></a></div>
-                <div class="btn-nav"><a href="./Mudar_perfil.html"><h3>Mudar perfil</h3></a></div>
-                <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
+                <div class="btn-nav"><a href="./historia.html">
+                        <h3>História</h3>
+                    </a></div>
+                <div class="btn-nav"><a href="./quiz.html">
+                        <h3>Quiz</h3>
+                    </a></div>
+                <div class="btn-nav"><a href="./dashboard.html">
+                        <h3>Painel</h3>
+                    </a></div>
+                <div class="btn-nav"><a href="./Mudar_perfil.html">
+                        <h3>Mudar perfil</h3>
+                    </a></div>
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
+            </div>
+        </div>
+        <div class="kpis">
+            <div class="kpi">
+                <h4>Porcentagem da História Lida:</h4>
+                <br>
+                <span id="Porcentagem">null</span>
+            </div>
+            <div class="kpi">
+                <h4>Quizzes Respondidos:</h4>
+                <br>
+                <span id="Respondidos">null</span>
+            </div>
+            <div class="kpi">
+                <h4>Maior Pontuação no quiz fácil:</h4>
+                <br>
+                <span id="fácil">null</span>
+            </div>
+            <div class="kpi">
+                <h4>Maior Pontuação no quiz médio:</h4>
+                <br>
+                <span id="médio">null</span>
+            </div>
+            <div class="kpi">
+                <h4>Maior Pontuação no quiz difícil:</h4>
+                <br>
+                <span id="difícil">null</span>
             </div>
         </div>
         <div class="conteudo"></div>

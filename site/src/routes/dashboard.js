@@ -4,11 +4,11 @@ var router = express.Router();
 var dashboardController = require("../controllers/dashboardcontroller");
 
 router.get("/painel/:idUsuario", function(req, res) {
-    estatisticasController.pegarEstatisticas(req, res);
+    dashboardController.painel(req, res);
 })
 
-router.get("/grafico/:idUsuario", function (req, res) {
-    estatisticasController.grafico1(req, res);
+router.get("/grafico", function (req, res) {
+    dashboardController.grafico(req, res);
 })
 
 

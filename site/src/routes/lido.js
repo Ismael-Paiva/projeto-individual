@@ -7,4 +7,8 @@ router.post("/visualizado/:id", function (req, res) {
     lidoController.visualizado(req, res);
 })
 
+router.get("/Visto/:id", function (req, res) {
+    lidoController.visto(req, res);
+})
+
 module.exports = router;

@@ -13,6 +13,16 @@ function cadastrar(idUsuario, fk) {
     return database.executar(instrucaoSql);
 }
 
+function visto(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function visto(idUsuario):");
+    var instrucaoSql = `
+        select count(visto) as lido from visualizacao where fkIdCapitulos in (1, 2, 3, 4, 5, 6, 7, 8) and fkIdUsuario = ${idUsuario} group by fkIdUsuario, fkIdCapitulos;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    visto
 };

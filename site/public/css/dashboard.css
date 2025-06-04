@@ -150,3 +150,29 @@ body {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+.grafico {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.conteudo-direita {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* ocupar todo o espaço disponível */
+  padding: 20px;
+  overflow-y: auto;
+}
+.conteudo-direita h2{
+  align-items: center;
+}
+
+.Titulo-grafico{
+  color: #000;
+  align-items: center;
+  justify-content: center;
+}

@@ -10,9 +10,10 @@
     <link rel="icon" href="../assets/icon/icon01.webp">
     <script src="../js/sessao.js"></script>
     <script src="../js/painel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body><!-- onload="validarSessao()" -->
+<body onload="validarSessao(), grafico()">
     <div class="pagina">
         <div class="janela">
             <div class="Titulo"></div>
@@ -36,33 +37,105 @@
                 </div>
             </div>
         </div>
+        <div class="conteudo-direita">
         <div class="kpis">
             <div class="kpi">
                 <h4>Porcentagem da História Lida:</h4>
                 <br>
-                <span id="Porcentagem">null</span>
+                <span id="Porcentagem"></span>
             </div>
             <div class="kpi">
                 <h4>Quizzes Respondidos:</h4>
                 <br>
-                <span id="Respondidos">null</span>
+                <span id="Respondidos"></span>
             </div>
             <div class="kpi">
                 <h4>Maior Pontuação no quiz fácil:</h4>
                 <br>
-                <span id="fácil">null</span>
+                <span id="fácil"></span>
             </div>
             <div class="kpi">
                 <h4>Maior Pontuação no quiz médio:</h4>
                 <br>
-                <span id="médio">null</span>
+                <span id="médio"></span>
             </div>
             <div class="kpi">
                 <h4>Maior Pontuação no quiz difícil:</h4>
                 <br>
-                <span id="difícil">null</span>
+                <span id="difícil"></span>
+            </div>
+        </div> <br><br><br>
+        
+        <div class="Titulo-grafico"><div><h2>Quantidade de leituras de cada capítulo:</h2></div></div>
+        <br><br>
+        <div class="grafico">
+            <div style="width: 50%;">
+                <canvas id="graficoBarra"></canvas>
             </div>
         </div>
-        <div class="conteudo"></div>
+    </div>
+    </div>
+    <div class="conteudo"></div>
+
     </div>
 </body>
+
+<script>
+ function grafico() {
+  fetch(`/dashboard/grafico`, {
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+      }
+  })
+  .then(resposta => {
+      if (resposta.ok) {
+          return resposta.json();
+      } else {
+          throw "Erro ao buscar dados no data base";
+      }
+  })
+  .then(exibirDados => {
+      var Barra = [];
+
+      for (var i = 0; i < exibirDados.length; i++) {
+          Barra.push(exibirDados[i]?.visto ?? 0);
+      }
+
+      while (Barra.length < 8) {
+          Barra.push(0);
+      }
+
+      var ctx = document.getElementById('graficoBarra').getContext('2d');
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: [
+                  'Capítulo 1: Colter',
+                  'Capítulo 2: Horseshoe Overlook',
+                  'Capítulo 3: Clemens Point',
+                  'Capítulo 4: Saint Denis',
+                  'Capítulo 5: Guarma',
+                  'Capítulo 6: Beaver Hollow',
+                  'Epílogo Parte 1: Pronghorn Ranch',
+                  'Epílogo Parte 2: Beechers Hope'
+              ],
+              datasets: [{
+                  label: 'Visualizações',
+                  data: Barra,
+                  backgroundColor: 'white'
+              }]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  y: { beginAtZero: true }
+              }
+          }
+      });
+  })
+  .catch(erro => {
+      console.log(`#ERRO: ${erro}`);
+  });
+}
+</script>

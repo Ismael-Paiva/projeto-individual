@@ -5,15 +5,17 @@ function painel(idUsuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function painel():", idUsuario);
 
     var instrucaoSql = `
-            SELECT 
-                ROUND(AVG(tempo_segundos)) AS tempo,
-                ROUND(AVG(qtd_erros)) AS erros,
-                MAX(pontuacao) AS pontos,
-                COUNT(idPartida) AS partidas
-            FROM TB_Partidas p JOIN TB_Usuarios u 
-            ON p.idUsuario = u.idUsuario 
-            WHERE p.idUsuario = ${idUsuario};
+            SELECT count(*) as Porcentagem from visualizacao
+            WHERE fkIdUsuario = ${idUsuario};
             `
+            console.log("Executando a instrução SQL: \n" + instrucaoSql);
+            return database.executar(instrucaoSql);
+}
+
+function grafico() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function painel():",);
+
+    var instrucaoSql = `SELECT count(visto) as visto from visualizacao where fkIdCapitulos in (1, 2, 3, 4, 5, 6, 7, 8) group by fkIdCapitulos;`
             console.log("Executando a instrução SQL: \n" + instrucaoSql);
             return database.executar(instrucaoSql);
 }

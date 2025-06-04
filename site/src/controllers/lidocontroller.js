@@ -30,6 +30,31 @@ function visualizado(req, res) {
     }
 }
 
+function visto(req, res) {
+    var idUsuario = req.params.id;
+    
+    if (idUsuario == undefined) {
+        res.status(400).send("Seu id está Indefinido!");
+    } else {
+        quizModel.visto(idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
-    visualizado
+    visualizado,
+    visto
 }

@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="../css/historia.css">
     <link rel="icon" href="../assets/icon/icon01.webp">
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
 </head>
-<body onload="validarSessao()">
+<body onload="validarSessao(), pegarDados()">
     <div class="pagina">
                 <div class="janela">
             <div class="Titulo" onclick="voltar()"></div>
@@ -281,10 +280,13 @@ function restaurarFundo() {
     conteudoHistoria.style.display = "none"; 
   }
   }
+    
 
   function Lido(numero) {
     var botao = document.getElementById('btnLido' + numero);
-    botao.style.backgroundColor = "green";
+    botao.style.backgroundColor = "green"
+    botao.disabled = true;
+    
      fetch(`/lido/visualizado/${idVar}`, {
       method: "POST",
       headers: {
@@ -297,19 +299,43 @@ function restaurarFundo() {
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          mensagem_erro.innerHTML =
-          "Informações guardada com sucesso";
-          setTimeout(() => {
-          window.location.reload();
-          }, "2000");
-        } else {
+        if (!resposta.ok) {
           throw "Houve um erro ao inserir as informações";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
+        botao.style.backgroundColor = "green";
       });
-    }
+      }
+    
 
+
+function pegarDados() {
+  fetch(`/lido/Visto/${idVar}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then(function (resposta) {
+    return resposta.json(); 
+  })
+  .then(function (exibirDados) {
+    console.log(exibirDados);
+
+    for (var i = 0; i < exibirDados.length; i++) {
+      if (exibirDados[i]?.lido == 1) {
+        var botao = document.getElementById('btnLido' + (i + 1));
+        if (botao) {
+          botao.disabled = true;
+          botao.style.backgroundColor = "green";
+        }
+      }
+    }
+  })
+  .catch(function (erro) {
+    console.log(`#ERRO: ${erro}`);
+  });
+}
 </script>

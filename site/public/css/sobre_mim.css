@@ -1,11 +1,10 @@
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Corpo mais claro */
 body {
   background-color: #fdfcf9;
   font-family: 'Georgia', serif;

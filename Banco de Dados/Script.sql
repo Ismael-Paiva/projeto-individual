@@ -30,6 +30,9 @@ foreign key (fkIdUsuarioQuiz) references usuario(idUsuario),
 foreign key (fkIdQuiz) references quiz(idQuiz)
 );
  
+select max(pontuação) from tentativas where fkIdQuiz in (1, 2, 3) group by fkIdUsuarioQuiz, fkIdQuiz;
+select * from usuario;
+ 
 create table visualizacao (
 idVizualizacao int auto_increment,
 fkIdCapitulos int,
@@ -42,7 +45,6 @@ foreign key (fkIdUsuario) references usuario(idUsuario)
 );
 
 insert into capitulos (nome , descricao) values 
-('Prólogo', 'A gangue de Dutch foge para as montanhas após um assalto fracassado, enfrentando frio e escassez.'),
 ('Capítulo 1: Colter', 'Escondidos na neve, os Van der Linde lutam para sobreviver e buscar suprimentos.'),
 ('Capítulo 2: Horseshoe Overlook', 'A gangue monta acampamento em Valentine. Roubos e conflitos com os ODriscoll começam a escalar.'),
 ('Capítulo 3: Clemens Point', 'A gangue se instala no sul e enfrenta os Braithwaite e Gray em uma guerra familiar.'),
